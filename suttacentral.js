@@ -21,8 +21,8 @@
 var mine = {
     // MN62
     "mn62:26.4": "They practice like this: ‘I’ll breathe in calming bodily formations.’ They practice like this: ‘I’ll breathe out calming bodily formations.’",
-    "mn62:27.1": "They practice like this: ‘I’ll breathe in feeling joy.’ They practice like this: ‘I’ll breathe out feeling joy.’",
-    "mn62:27.2": "They practice like this: ‘I’ll breathe in feeling happiness.’ They practice like this: ‘I’ll breathe out feeling happiness.’",
+    "mn62:27.1": "They practice like this: ‘I’ll breathe in experiencing joy.’ They practice like this: ‘I’ll breathe out experiencing joy.’",
+    "mn62:27.2": "They practice like this: ‘I’ll breathe in feeling ease.’ They practice like this: ‘I’ll breathe out feeling ease.’",
     "mn62:27.3": "They practice like this: ‘I’ll breathe in experiencing the mental activity.’ They practice like this: ‘I’ll breathe out experiencing the mental activity.’",
     "mn62:27.4": "They practice like this: ‘I’ll breathe in stilling the mental activity.’ They practice like this: ‘I’ll breathe out stilling the mental activity.’",
     "mn62:28.3": "They practice like this: ‘I’ll breathe in collecting the mind.’ They practice like this: ‘I’ll breathe out collecting the mind.’",
