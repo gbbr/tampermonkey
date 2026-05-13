@@ -80,15 +80,22 @@ var mine = {
 
     // toggle root text on clicking translation
     $(document).ready(function() {
+        // clicking on a translation toggles the visibility
+        // of the root text
         $(document).on("click", ".segment .translation", function() {
             $(this).parent().find(".root").toggleClass("show");
         });
 
+        $(document).on("dblclick", ".segment", function() {
+            const id = $(this).attr("id");
+            const text = $(this).find(".translation .text").text();
+            copyTextToClipboard('    "' + id + '": "' + text + '",');
+        });
+
+        // clicking outside the text closes all open root texts
         $(document).on('dblclick', function(e) {
-            // Select your target element
             var $target = $('#segmented_text_content');
 
-            // Check if the clicked element is NOT the target AND not a child of the target
             if (!$target.is(e.target) && $target.has(e.target).length === 0) {
                 $(".root").removeClass("show");
             }
@@ -119,6 +126,7 @@ function addStyles() {
     `);
 }
 
+// waits for element to load
 function waitForElement(selector) {
     return new Promise(resolve => {
         if (document.querySelector(selector)) {
@@ -137,4 +145,13 @@ function waitForElement(selector) {
             subtree: true
         });
     });
+}
+
+async function copyTextToClipboard(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    console.log('Text copied to clipboard');
+  } catch (err) {
+    console.error('Failed to copy: ', err);
+  }
 }
