@@ -29,7 +29,7 @@ var mine = {
     "mn62:29.2": "They practice like this: ‘I’ll breathe in observing dispassion.’ They practice like this: ‘I’ll breathe out observing dispassion.’",
     "mn62:29.4": "They practice like this: ‘I’ll breathe in letting go.’ They practice like this: ‘I’ll breathe out letting go.’",
 
-    // MN10
+    // MN118
     "mn118:18.4": "^mn62:26.4",
     "mn118:19.1": "^mn62:27.1",
     "mn118:19.2": "^mn62:27.2",
