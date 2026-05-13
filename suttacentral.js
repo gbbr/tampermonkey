@@ -1,3 +1,5 @@
+/* ====== START TAMPERMONKEY HEADER ====== */
+
 // ==UserScript==
 // @name         Pali Toggle
 // @namespace    http://tampermonkey.net/
@@ -7,9 +9,12 @@
 // @match        https://suttacentral.net/*
 // @require      https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js
 // @require      https://cdnjs.cloudflare.com/ajax/libs/jsdiff/5.1.0/diff.min.js
+// @require      file:///Users/azzalos/g/tampermonkey/suttacentral.js
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=suttacentral.net
 // @grant        GM_addStyle
 // ==/UserScript==
+
+/* ====== END TAMPERMONKEY HEADER ====== */
 
 /* global Diff */
 
@@ -38,29 +43,11 @@ var mine = {
 };
 
 (function($) {
-    // styles
-    GM_addStyle(`
-      .segment .root {
-        display: none;
-      }
-
-      .comment.red {
-        padding-right: 0px !important;
-      }
-
-      .comment.red::before {
-        color: #ffb182 !important;
-      }
-
-      .segment .root.show {
-        display: block;
-      }
-
-      .diff-added { background-color: #e6ffec; color: #24292f; text-decoration: none; }
-      .diff-removed { background-color: #ffebe9; color: #24292f; text-decoration: line-through; }
-    `);
+    addStyles()
 
     waitForElement("h1.sutta-title").then((el) => {
+        // Replace translations with custom ones
+        var replaced = 0;
         Object.keys(mine).forEach(function(id) {
             var txt = mine[id];
             if (txt.length > 1 && txt[0] == '^') {
@@ -85,10 +72,13 @@ var mine = {
             }).join('');
 
             t.html(txt + ' <span class="comment red"><b>Original text</b>: '+ html +'</span>');
+            replaced++;
         });
+
+        console.log("Replaced " + replaced + " translations.");
     })
 
-    // toggle root text
+    // toggle root text on clicking translation
     $(document).ready(function() {
         $(document).on("click", ".segment .translation", function() {
             $(this).parent().find(".root").toggleClass("show");
@@ -105,6 +95,29 @@ var mine = {
         });
     });
 })(window.jQuery.noConflict(true));
+
+function addStyles() {
+    GM_addStyle(`
+      .segment .root {
+        display: none;
+      }
+
+      .comment.red {
+        padding-right: 0px !important;
+      }
+
+      .comment.red::before {
+        color: #ffb182 !important;
+      }
+
+      .segment .root.show {
+        display: block;
+      }
+
+      .diff-added { background-color: #e6ffec; color: #24292f; text-decoration: none; }
+      .diff-removed { background-color: #ffebe9; color: #24292f; text-decoration: line-through; }
+    `);
+}
 
 function waitForElement(selector) {
     return new Promise(resolve => {
