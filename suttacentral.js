@@ -115,6 +115,31 @@ function addStyles() {
     injectFont('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
 
     GM_addStyle(`
+      #context_toolbar, #mainTitle, .generalTitle, #tools_menu {
+        height: 35px !important;
+      }
+
+      #context_toolbar {
+        background-color: #5f5555 !important;
+      }
+
+      #btnInfo:after {
+         content: '' !important;
+      }
+
+      header h1 {
+        margin-top: 0 !important;
+      }
+
+      #action_items {
+        position: relative !important;
+        top: -12px !important;
+      }
+
+      .generalTitle span {
+        font-size: 0.4em !important;
+      }
+
       .segment .root {
         display: none;
       }
