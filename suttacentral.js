@@ -100,9 +100,12 @@ var mine = {
         // clicking outside the text closes all open root texts
         $(document).on('dblclick', function(e) {
             var $target = $('#segmented_text_content');
+            var $target2 = $('sc-bottom-sheet');
 
             if (!$target.is(e.target) && $target.has(e.target).length === 0) {
-                $(".root").removeClass("show");
+                if (!$target2.is(e.target) && $target2.has(e.target).length === 0) {
+                    $(".root").removeClass("show");
+                }
             }
         });
     });
@@ -138,6 +141,7 @@ function addStyles() {
           display: inline-block;
           padding: 0 3px;
           line-height: 1.3;
+          background-color: #f9b20f63 !important;
       }
 
       .segment .root.show {
