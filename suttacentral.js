@@ -20,6 +20,8 @@
 
 var mine = {
     // MN62
+    "mn62:26.1": "Breathing in long they know: ‘I’m breathing in long.’ Breathing out long they know: ‘I’m breathing out long.’ ",
+    "mn62:26.2": "Breathing in short they know: ‘I’m breathing in short.’ Breathing out short they know: ‘I’m breathing out short.’ ",
     "mn62:26.4": "They practice like this: ‘I’ll breathe in calming bodily formations.’ They practice like this: ‘I’ll breathe out calming bodily formations.’",
     "mn62:27.1": "They practice like this: ‘I’ll breathe in experiencing joy.’ They practice like this: ‘I’ll breathe out experiencing joy.’",
     "mn62:27.2": "They practice like this: ‘I’ll breathe in feeling ease.’ They practice like this: ‘I’ll breathe out feeling ease.’",
@@ -29,7 +31,9 @@ var mine = {
     "mn62:29.2": "They practice like this: ‘I’ll breathe in observing dispassion.’ They practice like this: ‘I’ll breathe out observing dispassion.’",
     "mn62:29.4": "They practice like this: ‘I’ll breathe in letting go.’ They practice like this: ‘I’ll breathe out letting go.’",
 
-    // MN118
+    // MN11
+    "mn118:18.1": "^mn62:26.1",
+    "mn118:18.2": "^mn62:26.2",
     "mn118:18.4": "^mn62:26.4",
     "mn118:19.1": "^mn62:27.1",
     "mn118:19.2": "^mn62:27.2",
@@ -80,16 +84,17 @@ var mine = {
 
     // toggle root text on clicking translation
     $(document).ready(function() {
-        // clicking on a translation toggles the visibility
-        // of the root text
+        // expose Pali root on click
         $(document).on("click", ".segment .translation", function() {
             $(this).parent().find(".root").toggleClass("show");
         });
 
+        fixClose($)
+
         $(document).on("dblclick", ".segment", function() {
             const id = $(this).attr("id");
             const text = $(this).find(".translation .text").text();
-            copyTextToClipboard('    "' + id + '": "' + text + '",');
+            copyTextToClipboard('    "' + id + '": "' + text + '",\r\n');
         });
 
         // clicking outside the text closes all open root texts
@@ -104,6 +109,8 @@ var mine = {
 })(window.jQuery.noConflict(true));
 
 function addStyles() {
+    injectFont('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
+
     GM_addStyle(`
       .segment .root {
         display: none;
@@ -115,6 +122,22 @@ function addStyles() {
 
       .comment.red::before {
         color: #ffb182 !important;
+      }
+
+      sc-text-page-selector, .root .text {
+        font-family: "EB Garamond", serif !important;
+        font-weight: 400 !important;
+        font-size: 1.2em !important;
+      }
+
+      .root .text {
+          font-size: 1.1em !important;
+      }
+
+      .spanFocused {
+          display: inline-block;
+          padding: 0 3px;
+          line-height: 1.3;
       }
 
       .segment .root.show {
@@ -154,4 +177,69 @@ async function copyTextToClipboard(text) {
   } catch (err) {
     console.error('Failed to copy: ', err);
   }
+}
+
+function injectFont(url) {
+  const link = document.createElement('link');
+  link.href = url;
+  link.rel = 'stylesheet';
+  link.type = 'text/css';
+
+  document.head.appendChild(link);
+}
+
+// fixClose fixes an issue when closing the dictionary popup
+// where the highlighted text isn't removed
+function fixClose($) {
+    // This function handles the logic once the shadow root is accessible
+    function startShadowObserver(host) {
+        if (!host.shadowRoot) return;
+
+        const shadowObserver = new MutationObserver(() => {
+            const $btn = $(host.shadowRoot).find('#btnClose');
+
+            if ($btn.length && !$btn.attr('data-tm-ready')) {
+                $btn.attr('data-tm-ready', 'true');
+                $btn.on('click.myScript', function(e) {
+                    $(".word.spanFocused").removeClass("spanFocused");
+                });
+            }
+        });
+
+        shadowObserver.observe(host.shadowRoot, {
+            childList: true,
+            subtree: true
+        });
+    }
+
+    // TIER 1: Watch the main document for the 'sc-bottom-sheet'
+    const mainObserver = new MutationObserver(() => {
+        const host = document.querySelector('sc-bottom-sheet');
+        
+        if (host && !host.hasAttribute('data-tm-watching')) {
+            // Mark the host so we don't start multiple observers on it
+            host.setAttribute('data-tm-watching', 'true');
+            console.log("Host sc-bottom-sheet found. Checking Shadow Root...");
+            // Sometimes the host exists but the shadow root takes a millisecond to attach
+            if (host.shadowRoot) {
+                startShadowObserver(host);
+            } else {
+                // Wait for shadowRoot to be attached if it's not there yet
+                const waitLimit = 50; // try for 5 seconds
+                let tries = 0;
+                const checkInterval = setInterval(() => {
+                    if (host.shadowRoot) {
+                        clearInterval(checkInterval);
+                        startShadowObserver(host);
+                    }
+                    if (++tries > waitLimit) clearInterval(checkInterval);
+                }, 100);
+            }
+        }
+    });
+
+    mainObserver.observe(document.documentElement, {
+        childList: true,
+        subtree: true
+    });
 }
