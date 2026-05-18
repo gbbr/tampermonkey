@@ -25,18 +25,26 @@
 /* global Diff */
 
 var mine = {
-    "mn118:18.1": "Breathing in long they know: ‘I’m breathing in long.’ Breathing out long they know: ‘I’m breathing out long.’ ",
-    "mn118:18.2": "Breathing in short they know: ‘I’m breathing in short.’ Breathing out short they know: ‘I’m breathing out short.’ ",
-    "mn118:18.3": "They practice like this: ‘I’ll breathe in aware of the whole body.’ They practice like this: ‘I’ll breathe out aware of the whole body.’",
-    "mn118:18.4": "They practice like this: ‘I’ll breathe in calming the body formations.’ They practice like this: ‘I’ll breathe out calming the body formations.’",
-    "mn118:19.1": "They practice like this: ‘I’ll breathe in feeling delighted.’ They practice like this: ‘I’ll breathe out feeling delighted.’",
-    "mn118:19.2": "They practice like this: ‘I’ll breathe in feeling contented.’ They practice like this: ‘I’ll breathe out feeling contented.’",
-    "mn118:19.3": "They practice like this: ‘I’ll breathe in experiencing the mental activity.’ They practice like this: ‘I’ll breathe out experiencing the mental activity.’",
-    "mn118:19.4": "They practice like this: ‘I’ll breathe in calming the mental activity.’ They practice like this: ‘I’ll breathe out calming the mental activity.’",
-    "mn118:20.3": "They practice like this: ‘I’ll breathe in collecting the mind.’ They practice like this: ‘I’ll breathe out collecting the mind.’",
-    "mn118:20.4": "They practice like this: ‘I’ll breathe in freeing the mind [from the hindrances].’ They practice like this: ‘I’ll breathe out freeing the mind [from the hindrances].’ ",
-    "mn118:21.2": "They practice like this: ‘I’ll breathe in observing disinvolvement.’ They practice like this: ‘I’ll breathe out observing disinvolvement.’",
-    "mn118:21.4": "They practice like this: ‘I’ll breathe in letting go.’ They practice like this: ‘I’ll breathe out letting go.’",
+    "mn118:17.2": `Just mindful, he breathes in. Just mindful, he breathes out. `,
+    "mn118:18.1": `Breathing in long he knows: "I"m breathing in long." Breathing out long he knows: "I"m breathing out long." `,
+    "mn118:18.2": `Breathing in short he knows: "I"m breathing in short." Breathing out short he knows: "I"m breathing out short." `,
+    "mn118:18.3": `He practices like this: "I'll breathe in aware of the whole body." He practices like this: "I"ll breathe out aware of the whole body."`,
+    "mn118:18.4": `He practices like this: "I"ll breathe in calming the body formations." He practices like this: "I"ll breathe out calming the body formations."`,
+
+    "mn118:19.1": `He practices like this: "I'll breathe in feeling delighted." He practices like this: "I"ll breathe out feeling delighted."`,
+    "mn118:19.2": `He practices like this: "I'll breathe in feeling contented." He practices like this: "I"ll breathe out feeling contented."`,
+    "mn118:19.3": `He practices like this: "I'll breathe in experiencing the mental activity." He practices like this: "I"ll breathe out experiencing the mental activity."`,
+    "mn118:19.4": `He practices like this: "I'll breathe in calming the mental activity." He practices like this: "I"ll breathe out calming the mental activity."`,
+
+    "mn118:20.1": `He practices like this: "I'll breathe in experiencing the mind." He practices like this: "I"ll breathe out experiencing the mind." `,
+    "mn118:20.2": `He practices like this: "I'll breathe in gladdening the mind." He practices like this: "I"ll breathe out gladdening the mind." `,
+    "mn118:20.3": `He practices like this: "I'll breathe in collecting the mind." He practices like this: "I"ll breathe out collecting the mind."`,
+    "mn118:20.4": `He practices like this: "I'll breathe in freeing the mind." He practices like this: "I"ll breathe out freeing the mind." `,
+
+    "mn118:21.1": `He practices like this: "I'll breathe in observing impermanence." He practices like this: "I"ll breathe out observing impermanence." `,
+    "mn118:21.2": `He practices like this: "I'll breathe in observing disinvolvement." He practices like this: "I"ll breathe out observing disinvolvement."`,
+    "mn118:21.3": `He practices like this: "I'll breathe in observing cessation." He practices like this: "I"ll breathe out observing cessation." `,
+    "mn118:21.4": `He practices like this: "I'll breathe in letting go." He practices like this: "I"ll breathe out letting go."`,
 
     "mn62:26.1": "^mn118:18.1",
     "mn62:26.2": "^mn118:18.2",
@@ -46,22 +54,37 @@ var mine = {
     "mn62:27.2": "^mn118:19.2",
     "mn62:27.3": "^mn118:19.3",
     "mn62:27.4": "^mn118:19.4",
+    "mn62:28.1": "^mn118:20.1",
+    "mn62:28.2": "^mn118:20.2",
     "mn62:28.3": "^mn118:20.3",
+    "mn62:28.4": "^mn118:20.4",
+    "mn62:29.1": "^mn118:21.1",
     "mn62:29.2": "^mn118:21.2",
+    "mn62:29.3": "^mn118:21.3",
     "mn62:29.4": "^mn118:21.4",
 
-    "mn10:34.2": "It’s when a mendicant understands mind with greed as ‘greedy mind,’ ",
-    "mn10:34.4": "They understand mind with hate as ‘hateful mind,’ ",
-    "mn10:34.6": "They understand mind with delusion as ‘deluded mind,’ ",
-    "mn10:34.12": "They know mind that is unsurpassable as ‘unsurpassable mind,’ ",
-    "mn10:34.13": "and mind that is surpassable as ‘surpassable mind.’ ",
-    "mn10:34.8": "They know dull mind as ‘dull mind,’ ",
-    "mn10:34.9": "and restless mind as ‘restless mind.’ ",
+    "mn10:34.2": `It"s when a mendicant understands mind with greed as "greedy mind," `,
+    "mn10:34.4": `They understand mind with hate as "hateful mind," `,
+    "mn10:34.6": `They understand mind with delusion as "deluded mind," `,
+    "mn10:34.8": `They know contracted <span class="add">[dull]</span> mind as "contracted mind," `,
+    "mn10:34.9": `and distracted <span class="add">[restless]</span> mind as "distracted mind." `,
+    "mn10:34.10": `They know great mind as "great mind," `,
+    "mn10:34.11": `and not great mind as "not great mind." `,
+    "mn10:34.12": `They know mind that is unsurpassable as "unsurpassable mind," `,
+    "mn10:34.13": `and mind that is surpassable as "surpassable mind." `,
+    "mn10:34.14": `They know collected mind as "mind collected," `,
+    "mn10:34.15": `and not collected mind as "mind not collected." `,
+    "mn10:34.16": `They know a mind that is freed as "freed mind," `,
+    "mn10:34.17": `and a mind that is not freed as "unfreed mind." `,
 
     "#": ""
 };
 
 (function($) {
+    if ('history' in window && 'scrollRestoration' in window) {
+      window.history.scrollRestoration = 'auto';
+    }
+
     addStyles()
 
     waitForElement("h1.sutta-title").then((el) => {
@@ -109,7 +132,7 @@ var mine = {
         $(document).on("dblclick", ".segment", function() {
             const id = $(this).attr("id");
             const text = $(this).find(".translation .text").text();
-            copyTextToClipboard('    "' + id + '": "' + text + '",\r\n');
+            copyTextToClipboard('    "' + id + '": `' + text + '`,\r\n');
         });
 
         // clicking outside the text closes all open root texts
@@ -157,6 +180,10 @@ function addStyles() {
 
       .generalTitle span {
         font-size: 0.4em !important;
+      }
+
+      .segment {
+        grid-template-columns: minmax(200px, 900px) !important;
       }
 
       .segment .root {
