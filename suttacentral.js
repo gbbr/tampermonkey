@@ -1,4 +1,5 @@
-/* ====== START TAMPERMONKEY HEADER ====== */
+/* ====== START TAMPERMONKEY SCRIPT ====== */
+/* The below needs to go into the actual browser TamperMonkey script */
 
 // ==UserScript==
 // @name         Pali Toggle
@@ -10,38 +11,52 @@
 // @require      https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js
 // @require      https://cdnjs.cloudflare.com/ajax/libs/jsdiff/5.1.0/diff.min.js
 // @require      file:///Users/azzalos/g/tampermonkey/suttacentral.js
+// @resource     SabonNextLT file:///Users/azzalos/g/tampermonkey/fonts/SabonNextLT.ttf
+// @resource     SabonNextLTBold file:///Users/azzalos/g/tampermonkey/fonts/SabonNextLTBold.ttf
+// @resource     SabonNextLTItalic file:///Users/azzalos/g/tampermonkey/fonts/SabonNextLTItalic.ttf
+// @resource     SabonNextLTBoldItalic file:///Users/azzalos/g/tampermonkey/fonts/SabonNextLTBoldItalic.ttf
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=suttacentral.net
 // @grant        GM_addStyle
+// @grant        GM_getResourceURL
 // ==/UserScript==
 
-/* ====== END TAMPERMONKEY HEADER ====== */
+/* ====== END TAMPERMONKEY SCRIPT ====== */
 
 /* global Diff */
 
 var mine = {
-    // MN62
-    "mn62:26.1": "Breathing in long they know: ‘I’m breathing in long.’ Breathing out long they know: ‘I’m breathing out long.’ ",
-    "mn62:26.2": "Breathing in short they know: ‘I’m breathing in short.’ Breathing out short they know: ‘I’m breathing out short.’ ",
-    "mn62:26.4": "They practice like this: ‘I’ll breathe in calming bodily formations.’ They practice like this: ‘I’ll breathe out calming bodily formations.’",
-    "mn62:27.1": "They practice like this: ‘I’ll breathe in experiencing joy.’ They practice like this: ‘I’ll breathe out experiencing joy.’",
-    "mn62:27.2": "They practice like this: ‘I’ll breathe in feeling ease.’ They practice like this: ‘I’ll breathe out feeling ease.’",
-    "mn62:27.3": "They practice like this: ‘I’ll breathe in experiencing the mental activity.’ They practice like this: ‘I’ll breathe out experiencing the mental activity.’",
-    "mn62:27.4": "They practice like this: ‘I’ll breathe in stilling the mental activity.’ They practice like this: ‘I’ll breathe out stilling the mental activity.’",
-    "mn62:28.3": "They practice like this: ‘I’ll breathe in collecting the mind.’ They practice like this: ‘I’ll breathe out collecting the mind.’",
-    "mn62:29.2": "They practice like this: ‘I’ll breathe in observing dispassion.’ They practice like this: ‘I’ll breathe out observing dispassion.’",
-    "mn62:29.4": "They practice like this: ‘I’ll breathe in letting go.’ They practice like this: ‘I’ll breathe out letting go.’",
+    "mn118:18.1": "Breathing in long they know: ‘I’m breathing in long.’ Breathing out long they know: ‘I’m breathing out long.’ ",
+    "mn118:18.2": "Breathing in short they know: ‘I’m breathing in short.’ Breathing out short they know: ‘I’m breathing out short.’ ",
+    "mn118:18.3": "They practice like this: ‘I’ll breathe in aware of the whole body.’ They practice like this: ‘I’ll breathe out aware of the whole body.’",
+    "mn118:18.4": "They practice like this: ‘I’ll breathe in calming the body formations.’ They practice like this: ‘I’ll breathe out calming the body formations.’",
+    "mn118:19.1": "They practice like this: ‘I’ll breathe in feeling delighted.’ They practice like this: ‘I’ll breathe out feeling delighted.’",
+    "mn118:19.2": "They practice like this: ‘I’ll breathe in feeling contented.’ They practice like this: ‘I’ll breathe out feeling contented.’",
+    "mn118:19.3": "They practice like this: ‘I’ll breathe in experiencing the mental activity.’ They practice like this: ‘I’ll breathe out experiencing the mental activity.’",
+    "mn118:19.4": "They practice like this: ‘I’ll breathe in calming the mental activity.’ They practice like this: ‘I’ll breathe out calming the mental activity.’",
+    "mn118:20.3": "They practice like this: ‘I’ll breathe in collecting the mind.’ They practice like this: ‘I’ll breathe out collecting the mind.’",
+    "mn118:20.4": "They practice like this: ‘I’ll breathe in freeing the mind [from the hindrances].’ They practice like this: ‘I’ll breathe out freeing the mind [from the hindrances].’ ",
+    "mn118:21.2": "They practice like this: ‘I’ll breathe in observing disinvolvement.’ They practice like this: ‘I’ll breathe out observing disinvolvement.’",
+    "mn118:21.4": "They practice like this: ‘I’ll breathe in letting go.’ They practice like this: ‘I’ll breathe out letting go.’",
 
-    // MN11
-    "mn118:18.1": "^mn62:26.1",
-    "mn118:18.2": "^mn62:26.2",
-    "mn118:18.4": "^mn62:26.4",
-    "mn118:19.1": "^mn62:27.1",
-    "mn118:19.2": "^mn62:27.2",
-    "mn118:19.3": "^mn62:27.3",
-    "mn118:19.4": "^mn62:27.4",
-    "mn118:20.3": "^mn62:28.3",
-    "mn118:21.2": "^mn62:29.2",
-    "mn118:21.4": "^mn62:29.4",
+    "mn62:26.1": "^mn118:18.1",
+    "mn62:26.2": "^mn118:18.2",
+    "mn62:26.3": "^mn118:18.3",
+    "mn62:26.4": "^mn118:18.4",
+    "mn62:27.1": "^mn118:19.1",
+    "mn62:27.2": "^mn118:19.2",
+    "mn62:27.3": "^mn118:19.3",
+    "mn62:27.4": "^mn118:19.4",
+    "mn62:28.3": "^mn118:20.3",
+    "mn62:29.2": "^mn118:21.2",
+    "mn62:29.4": "^mn118:21.4",
+
+    "mn10:34.2": "It’s when a mendicant understands mind with greed as ‘greedy mind,’ ",
+    "mn10:34.4": "They understand mind with hate as ‘hateful mind,’ ",
+    "mn10:34.6": "They understand mind with delusion as ‘deluded mind,’ ",
+    "mn10:34.12": "They know mind that is unsurpassable as ‘unsurpassable mind,’ ",
+    "mn10:34.13": "and mind that is surpassable as ‘surpassable mind.’ ",
+    "mn10:34.8": "They know dull mind as ‘dull mind,’ ",
+    "mn10:34.9": "and restless mind as ‘restless mind.’ ",
 
     "#": ""
 };
@@ -112,9 +127,13 @@ var mine = {
 })(window.jQuery.noConflict(true));
 
 function addStyles() {
-    injectFont('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
+    injectFonts();
 
     GM_addStyle(`
+      body {
+        background-color: #FFF !important;
+      }
+
       #context_toolbar, #mainTitle, .generalTitle, #tools_menu {
         height: 35px !important;
       }
@@ -208,13 +227,29 @@ async function copyTextToClipboard(text) {
   }
 }
 
-function injectFont(url) {
+function injectFonts(url) {
   const link = document.createElement('link');
-  link.href = url;
+  link.href = 'https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap';
   link.rel = 'stylesheet';
   link.type = 'text/css';
 
   document.head.appendChild(link);
+
+
+  ['SabonNextLT', 'SabonNextLTItalic', 'SabonNextLTBold', 'SabonNextLTBoldItalic'].forEach(resourceURL => {
+      const fontUrl = GM_getResourceURL(resourceURL);
+      const style = document.createElement('style');
+      style.textContent = `
+          @font-face {
+            font-family: 'MyLocalFont';
+            src: url('${fontUrl}') format('truetype');
+          }
+          body {
+            font-family: 'MyLocalFont', sans-serif !important;
+          }
+      `;
+      document.head.appendChild(style);
+    });
 }
 
 // fixClose fixes an issue when closing the dictionary popup
