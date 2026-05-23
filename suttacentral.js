@@ -11,10 +11,6 @@
 // @require      https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js
 // @require      https://cdnjs.cloudflare.com/ajax/libs/jsdiff/5.1.0/diff.min.js
 // @require      file:///Users/azzalos/g/tampermonkey/suttacentral.js
-// @resource     SabonNextLT file:///Users/azzalos/g/tampermonkey/fonts/SabonNextLT.ttf
-// @resource     SabonNextLTBold file:///Users/azzalos/g/tampermonkey/fonts/SabonNextLTBold.ttf
-// @resource     SabonNextLTItalic file:///Users/azzalos/g/tampermonkey/fonts/SabonNextLTItalic.ttf
-// @resource     SabonNextLTBoldItalic file:///Users/azzalos/g/tampermonkey/fonts/SabonNextLTBoldItalic.ttf
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=suttacentral.net
 // @grant        GM_addStyle
 // @grant        GM_getResourceURL
@@ -30,21 +26,20 @@ var mine = {
     "mn118:18.2": `Breathing in short he knows: "I"m breathing in short." Breathing out short he knows: "I"m breathing out short." `,
     "mn118:18.3": `He practices like this: "I'll breathe in aware of the whole body." He practices like this: "I"ll breathe out aware of the whole body."`,
     "mn118:18.4": `He practices like this: "I"ll breathe in calming the body formations." He practices like this: "I"ll breathe out calming the body formations."`,
-
     "mn118:19.1": `He practices like this: "I'll breathe in feeling delighted." He practices like this: "I"ll breathe out feeling delighted."`,
     "mn118:19.2": `He practices like this: "I'll breathe in feeling contented." He practices like this: "I"ll breathe out feeling contented."`,
     "mn118:19.3": `He practices like this: "I'll breathe in experiencing the mental activity." He practices like this: "I"ll breathe out experiencing the mental activity."`,
-    "mn118:19.4": `He practices like this: "I'll breathe in calming the mental activity." He practices like this: "I"ll breathe out calming the mental activity."`,
-
+    "mn118:19.4": `He practices like this: "I'll breathe in stilling the mental activity." He practices like this: "I"ll breathe out stilling the mental activity."`,
     "mn118:20.1": `He practices like this: "I'll breathe in experiencing the mind." He practices like this: "I"ll breathe out experiencing the mind." `,
     "mn118:20.2": `He practices like this: "I'll breathe in gladdening the mind." He practices like this: "I"ll breathe out gladdening the mind." `,
     "mn118:20.3": `He practices like this: "I'll breathe in collecting the mind." He practices like this: "I"ll breathe out collecting the mind."`,
     "mn118:20.4": `He practices like this: "I'll breathe in freeing the mind." He practices like this: "I"ll breathe out freeing the mind." `,
-
     "mn118:21.1": `He practices like this: "I'll breathe in observing impermanence." He practices like this: "I"ll breathe out observing impermanence." `,
     "mn118:21.2": `He practices like this: "I'll breathe in observing disinvolvement." He practices like this: "I"ll breathe out observing disinvolvement."`,
     "mn118:21.3": `He practices like this: "I'll breathe in observing cessation." He practices like this: "I"ll breathe out observing cessation." `,
     "mn118:21.4": `He practices like this: "I'll breathe in letting go." He practices like this: "I"ll breathe out letting go."`,
+
+    "sn22.39:1.3": `They should live full of disenchantment towards form, feeling, perception, choices, and consciousness. `,
 
     "mn62:26.1": "^mn118:18.1",
     "mn62:26.2": "^mn118:18.2",
@@ -153,6 +148,18 @@ function addStyles() {
     injectFonts();
 
     GM_addStyle(`
+      h1 .text, h2 .text, h3 .text {
+        color: #777 !important;
+      }
+
+      .text {
+        color: #000 !important;
+      }
+
+      .segment .root .text {
+        color: #667 !important;
+      }
+
       body {
         background-color: #FFF !important;
       }
@@ -183,6 +190,7 @@ function addStyles() {
       }
 
       .segment {
+        margin: 0px 40px;
         grid-template-columns: minmax(200px, 900px) !important;
       }
 
@@ -199,13 +207,9 @@ function addStyles() {
       }
 
       sc-text-page-selector, .root .text {
-        font-family: "EB Garamond", serif !important;
+        font-family: "Sabon Next LT W04 Regular", serif !important;
         font-weight: 400 !important;
-        font-size: 1.2em !important;
-      }
-
-      .root .text {
-          font-size: 1.1em !important;
+        font-size: 1.0em !important;
       }
 
       .spanFocused {
@@ -254,29 +258,17 @@ async function copyTextToClipboard(text) {
   }
 }
 
-function injectFonts(url) {
-  const link = document.createElement('link');
-  link.href = 'https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap';
-  link.rel = 'stylesheet';
-  link.type = 'text/css';
-
-  document.head.appendChild(link);
-
-
-  ['SabonNextLT', 'SabonNextLTItalic', 'SabonNextLTBold', 'SabonNextLTBoldItalic'].forEach(resourceURL => {
-      const fontUrl = GM_getResourceURL(resourceURL);
-      const style = document.createElement('style');
-      style.textContent = `
-          @font-face {
-            font-family: 'MyLocalFont';
-            src: url('${fontUrl}') format('truetype');
-          }
-          body {
-            font-family: 'MyLocalFont', sans-serif !important;
-          }
-      `;
-      document.head.appendChild(style);
-    });
+function injectFonts() {
+  [
+      'https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap',
+      'https://db.onlinewebfonts.com/c/8682a614b45207e84ddd15ef6093cdab?family=Sabon+Next+LT+W04+Regular'
+  ].forEach(resourceURL => {
+      const link = document.createElement('link');
+      link.href = resourceURL;
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      document.head.appendChild(link);
+  });
 }
 
 // fixClose fixes an issue when closing the dictionary popup
