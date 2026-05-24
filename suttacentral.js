@@ -52,6 +52,13 @@ var mine = {
     "mn118:27.7": `That’s why at that time a mendicant is meditating by observing an aspect of principles—ardently aware and understanding, letting go of craving and aversion towards the world. `,
     "mn118:42.7": `and equanimity, which rely on seclusion, disinvolvment, and cessation, and ripen as letting go. `,
 
+    // Kummopamasutta
+    "sn35.240:2.7": `If the faculty of sight were left unrestrained, bad unskillful qualities of craving and aversion would become overwhelming. For this reason, practice restraint, protecting the faculty of sight, and achieving its restraint. `,
+    "sn35.240:2.13": `If the faculty of mind were left unrestrained, bad unskillful qualities of craving and aversion would become overwhelming. For this reason, practice restraint, protecting the faculty of mind, and achieving its restraint. `,
+
+    // Sabbasutta
+    "sn35.23:1.11": `Because it's out of one's range.” `,
+
     // Anudhammasutta
     "sn22.39:1.3": `They should live full of disenchantment towards form, feeling, perception, choices, and consciousness. `,
 
@@ -66,7 +73,9 @@ var mine = {
     "sn47.35:3.1": `And how is a mendicant understanding? `,
     "sn47.35:3.2": `It’s when a mendicant knows feelings as they arise, as they persist, and as they disappear. `,
     "sn47.35:3.3": `He knows thoughts as they arise, as they persist, and as they disappear. `,
+    "sn47.35:3.5": `That’s how a mendicant is understanding. `,
     "sn47.35:3.4": `He knows perceptions as they arise, as they persist, and as they disappear. `,
+    "sn47.35:3.6": `A mendicant should live with awareness and understanding. `,
 
     // Mahārāhulovādasutta
     "mn62:26.1": "^mn118:18.1",
