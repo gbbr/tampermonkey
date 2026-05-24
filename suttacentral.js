@@ -21,6 +21,7 @@
 /* global Diff */
 
 var mine = {
+    // Anapanasatisutta
     "mn118:17.2": `Just mindful, he breathes in. Just mindful, he breathes out. `,
     "mn118:18.1": `Breathing in long he knows: "I"m breathing in long." Breathing out long he knows: "I"m breathing out long." `,
     "mn118:18.2": `Breathing in short he knows: "I"m breathing in short." Breathing out short he knows: "I"m breathing out short." `,
@@ -38,9 +39,36 @@ var mine = {
     "mn118:21.2": `He practices like this: "I'll breathe in observing disinvolvement." He practices like this: "I"ll breathe out observing disinvolvement."`,
     "mn118:21.3": `He practices like this: "I'll breathe in observing cessation." He practices like this: "I"ll breathe out observing cessation." `,
     "mn118:21.4": `He practices like this: "I'll breathe in letting go." He practices like this: "I"ll breathe out letting go."`,
+    "mn118:24.5": `at that time they’re meditating by observing an aspect of the body—ardently aware and understanding, letting go of craving and aversion towards the world. `,
+    "mn118:24.7": `That’s why at that time a mendicant is meditating by observing an aspect of the body—ardently aware and understanding, letting go of craving and aversion towards the world. `,
+    "mn118:25.5": `at that time they meditate observing an aspect of feelings—ardently aware and understanding, letting go of craving and aversion towards the world. `,
+    "mn118:25.7": `That’s why at that time a mendicant is meditating by observing an aspect of feelings—ardently aware and understanding, letting go of craving and aversion towards the world. `,
+    "mn118:26.5": `at that time they meditate observing an aspect of the mind—ardently aware and understanding, letting go of craving and aversion towards the world. `,
+    "mn118:26.6": `There is no development of mindfulness of breathing for someone who is unaware and lacks understanding, I say. `,
+    "mn118:26.7": `That’s why at that time a mendicant is meditating by observing an aspect of the mind—ardently aware and understanding, letting go of craving and aversion towards the world. `,
+    "mn118:27.2": `or observing disinvolvement, `,
+    "mn118:27.6": `Having seen with wisdom the giving up of craving and aversion, they watch over closely with equanimity. `,
+    "mn118:27.5": `at that time they meditate observing an aspect of principles—ardently aware and understanding, letting go of craving and aversion towards the world. `,
+    "mn118:27.7": `That’s why at that time a mendicant is meditating by observing an aspect of principles—ardently aware and understanding, letting go of craving and aversion towards the world. `,
+    "mn118:42.7": `and equanimity, which rely on seclusion, disinvolvment, and cessation, and ripen as letting go. `,
 
+    // Anudhammasutta
     "sn22.39:1.3": `They should live full of disenchantment towards form, feeling, perception, choices, and consciousness. `,
 
+    // Satisutta
+    "sn47.35:0.3": `Aware `,
+    "sn47.35:1.2": `“Mendicants, a mendicant should live with awareness and understanding. `,
+    "sn47.35:2.1": `And how is a mendicant aware? `,
+    "sn47.35:2.2": `It’s when a mendicant lives observing the body—ardently aware and understanding, letting go of craving and aversion towards the world <span class="add">of mind and matter</span>. `,
+    "sn47.35:2.3": `He lives observing an aspect of feelings … `,
+    "sn47.35:2.5": `principles—ardently aware and understanding, putting aside craving and aversion towards the world <span class="add">of mind and matter</span>. `,
+    "sn47.35:2.6": `That’s how a mendicant is aware. `,
+    "sn47.35:3.1": `And how is a mendicant understanding? `,
+    "sn47.35:3.2": `It’s when a mendicant knows feelings as they arise, as they persist, and as they disappear. `,
+    "sn47.35:3.3": `He knows thoughts as they arise, as they persist, and as they disappear. `,
+    "sn47.35:3.4": `He knows perceptions as they arise, as they persist, and as they disappear. `,
+
+    // Mahārāhulovādasutta
     "mn62:26.1": "^mn118:18.1",
     "mn62:26.2": "^mn118:18.2",
     "mn62:26.3": "^mn118:18.3",
@@ -58,6 +86,7 @@ var mine = {
     "mn62:29.3": "^mn118:21.3",
     "mn62:29.4": "^mn118:21.4",
 
+    // Satipatthana Sutta
     "mn10:34.2": `It"s when a mendicant understands mind with greed as "greedy mind," `,
     "mn10:34.4": `They understand mind with hate as "hateful mind," `,
     "mn10:34.6": `They understand mind with delusion as "deluded mind," `,
@@ -164,14 +193,6 @@ function addStyles() {
         background-color: #FFF !important;
       }
 
-      #context_toolbar, #mainTitle, .generalTitle, #tools_menu {
-        height: 35px !important;
-      }
-
-      #context_toolbar {
-        background-color: #5f5555 !important;
-      }
-
       #btnInfo:after {
          content: '' !important;
       }
@@ -180,14 +201,11 @@ function addStyles() {
         margin-top: 0 !important;
       }
 
-      #action_items {
-        position: relative !important;
-        top: -12px !important;
-      }
-
       .generalTitle span {
         font-size: 0.4em !important;
       }
+
+      a.skip-to-content-link { display: none !important; }
 
       .segment {
         margin: 0px 40px;
@@ -207,10 +225,13 @@ function addStyles() {
       }
 
       sc-text-page-selector, .root .text {
-        font-family: "Sabon Next LT W04 Regular", serif !important;
+        font-family: "Georgia", serif !important;
         font-weight: 400 !important;
+        line-height: 1.6em !important;
         font-size: 1.0em !important;
       }
+
+      p { margin-top: 1em !important; }
 
       .spanFocused {
           display: inline-block;
@@ -261,7 +282,9 @@ async function copyTextToClipboard(text) {
 function injectFonts() {
   [
       'https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap',
-      'https://db.onlinewebfonts.com/c/8682a614b45207e84ddd15ef6093cdab?family=Sabon+Next+LT+W04+Regular'
+      'https://db.onlinewebfonts.com/c/8682a614b45207e84ddd15ef6093cdab?family=Sabon+Next+LT+W04+Regular',
+      'https://db.onlinewebfonts.com/c/663c911905498d27729fe0a7f1ca2cc4?family=Bookerly',
+      'https://fonts.googleapis.com/css2?family=Baskervville:ital,wght@0,400..700;1,400..700&family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet'
   ].forEach(resourceURL => {
       const link = document.createElement('link');
       link.href = resourceURL;
