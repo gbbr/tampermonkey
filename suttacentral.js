@@ -35,6 +35,14 @@ const SUTTA_BASE = "file:///Users/azzalos/g/tampermonkey/sujato/sutta";
                 return
             }
 
+            var nfile = Object.keys(en).length,
+                npage = $("article .segment").length - 1;
+
+            console.log(`Loaded ${nfile} segments from file and found ${npage} segments in page.`);
+            if (nfile != npage) {
+                console.error(`Mismatch between file and page segment count (${nfile}/${npage}).`);
+            }
+
             Object.entries(en).forEach(([key, value]) => {
                 var el = $("span.segment[id='"+key+"'] > .translation > .text"),
                     orig = el.html(),
@@ -323,6 +331,7 @@ function loadSutta(suttaId, cb) {
       return reject(err);
     }
  
+    console.log(`Loading ${suttaId} from ${url}...`);
     GM_xmlhttpRequest({
       method: "GET",
       url,
