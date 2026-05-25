@@ -24,10 +24,6 @@
 const SUTTA_BASE = "file:///Users/azzalos/g/tampermonkey/sujato/sutta";
 
 (function($) {
-    if ('history' in window && 'scrollRestoration' in window) {
-      window.history.scrollRestoration = 'auto';
-    }
-
     addStyles()
 
     waitForElement("h1.sutta-title").then((el) => {
