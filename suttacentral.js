@@ -23,158 +23,6 @@
 
 const SUTTA_BASE = "file:///Users/azzalos/g/tampermonkey/sujato/sutta";
 
-var mine = {
-    // Anapanasatisutta
-    "mn118:2.1": `Now at that time the senior meditators were advising and instructing the junior meditators. `,
-    "mn118:2.2": `Some senior meditators instructed ten meditators, while some instructed twenty, thirty, or forty. `,
-    "mn118:2.3": `Being instructed by the senior meditators, the junior meditators realized a higher distinction than they had before. `,
-    "mn118:3.2": `Then the Buddha looked around the Saṅgha of meditators, who were so very silent. He addressed them: `,
-    "mn118:4.1": `“I am satisfied, meditators, with this practice. `,
-    "mn118:5.1": `Meditators from around the country heard about this, `,
-    "mn118:6.1": `And those senior meditators instructed the junior meditators even more. `,
-    "mn118:6.2": `Some senior meditators instructed ten meditators, while some instructed twenty, thirty, or forty. `,
-    "mn118:6.3": `Being instructed by the senior meditators, the junior meditators realized a higher distinction than they had before. `,
-    "mn118:7.2": `Then the Buddha looked around the Saṅgha of meditators, who were so very silent. He addressed them: `,
-    "mn118:8.1": `“This assembly has no chaff, meditators, it is free of chaff, pure, and consolidated in the core. `,
-    "mn118:8.2": `Such is this Saṅgha of meditators, such is this assembly! `,
-    "mn118:8.4": `^mn118:8.2`,
-    "mn118:8.6": `^mn118:8.2`,
-    "mn118:8.8": `^mn118:8.2`,
-    "mn118:9.1": `For in this Saṅgha there are perfected meditators, who have ended the defilements, completed the spiritual journey, done what had to be done, laid down the burden, achieved their heart’s goal, utterly ended the fetter of continued existence, and are rightly freed through enlightenment. `,
-    "mn118:9.2": `There are such meditators in this Saṅgha. `,
-    "mn118:10.1": `In this Saṅgha there are meditators who, with the ending of the five lower fetters are reborn spontaneously. They are extinguished there, and are not liable to return from that world. `,
-    "mn118:10.2": `^mn118:9.2`,
-    "mn118:11.1": `In this Saṅgha there are meditators who, with the ending of three fetters, and the weakening of greed, hate, and delusion, are once-returners. They come back to this world once only, then make an end of suffering. `,
-    "mn118:11.2": `^mn118:9.2`,
-    "mn118:12.2": `^mn118:9.2`,
-    "mn118:13.1": `In this Saṅgha there are meditators who are committed to developing the four kinds of mindfulness meditation … `,
-    "mn118:14.7": `^mn118:9.2`,
-    "mn118:14.8": `In this Saṅgha there are meditators who are committed to developing the meditation on love … `,
-    "mn118:14.14": `^mn118:9.2`,
-    "mn118:14.15": `In this Saṅgha there are meditators who are committed to developing the meditation on mindfulness of breathing. `,
-    "mn118:15.1": `Meditators, when mindfulness of breathing is developed and cultivated it is very fruitful and beneficial. `,
-    "mn118:17.1": `It’s when a meditator—gone to a wilderness, or to the root of a tree, or to an empty hut—sits down cross-legged, sets their body straight, and brings mindfulness to the present. `,
-    "mn118:17.2": `Just mindful, he breathes in. Just mindful, he breathes out. `,
-    "mn118:18.1": `Breathing in long he knows: "I"m breathing in long." Breathing out long he knows: "I"m breathing out long." `,
-    "mn118:18.2": `Breathing in short he knows: "I"m breathing in short." Breathing out short he knows: "I"m breathing out short." `,
-    "mn118:18.3": `He practices like this: "I'll breathe in aware of the whole body." He practices like this: "I"ll breathe out aware of the whole body."`,
-    "mn118:18.4": `He practices like this: "I"ll breathe in calming the body formations." He practices like this: "I"ll breathe out calming the body formations."`,
-    "mn118:19.1": `He practices like this: "I'll breathe in feeling delighted." He practices like this: "I"ll breathe out feeling delighted."`,
-    "mn118:19.2": `He practices like this: "I'll breathe in feeling contented." He practices like this: "I"ll breathe out feeling contented."`,
-    "mn118:19.3": `He practices like this: "I'll breathe in experiencing the mental activity." He practices like this: "I"ll breathe out experiencing the mental activity."`,
-    "mn118:19.4": `He practices like this: "I'll breathe in stilling the mental activity." He practices like this: "I"ll breathe out stilling the mental activity."`,
-    "mn118:20.1": `He practices like this: "I'll breathe in experiencing the mind." He practices like this: "I"ll breathe out experiencing the mind." `,
-    "mn118:20.2": `He practices like this: "I'll breathe in gladdening the mind." He practices like this: "I"ll breathe out gladdening the mind." `,
-    "mn118:20.3": `He practices like this: "I'll breathe in collecting the mind." He practices like this: "I"ll breathe out collecting the mind."`,
-    "mn118:20.4": `He practices like this: "I'll breathe in freeing the mind." He practices like this: "I"ll breathe out freeing the mind." `,
-    "mn118:21.1": `He practices like this: "I'll breathe in observing impermanence." He practices like this: "I"ll breathe out observing impermanence." `,
-    "mn118:21.2": `He practices like this: "I'll breathe in observing disinvolvement." He practices like this: "I"ll breathe out observing disinvolvement."`,
-    "mn118:21.3": `He practices like this: "I'll breathe in observing cessation." He practices like this: "I"ll breathe out observing cessation." `,
-    "mn118:21.4": `He practices like this: "I'll breathe in letting go." He practices like this: "I"ll breathe out letting go."`,
-    "mn118:24.1": `Whenever a meditator knows that they are breathing in long, or breathing out long, `,
-    "mn118:24.2": `or breathing in short, or breathing out short, `,
-    "mn118:24.3": `or being aware of the whole body, `,
-    "mn118:24.4": `or calming the body formations—`,
-    "mn118:24.5": `at that time they’re meditating by observing the body in and of itself—ardently aware and understanding, letting go of craving and aversion towards the world. `,
-    "mn118:24.7": `That’s why at that time a meditator is meditating by observing the body in and of itself—ardently aware and understanding, letting go of craving and aversion towards the world. `,
-    "mn118:25.1": `Whenever a meditator practices breathing while feeling delighted, `,
-    "mn118:25.2": `or feeling contented, `,
-    "mn118:25.3": `or experiencing the mental activity, `,
-    "mn118:25.4": `or stilling the mental activity—`,
-    "mn118:25.6": `For I say that careful attention to the in-breaths and out-breaths is an aspect of feelings. `,
-    "mn118:25.5": `at that time they meditate observing feelings in and of themselves—ardently aware and understanding, letting go of craving and aversion towards the world. `,
-    "mn118:25.7": `That’s why at that time a meditator is meditating by observing feelings in and of themselves—ardently aware and understanding, letting go of craving and aversion towards the world. `,
-    "mn118:26.1": `Whenever a meditator practices breathing while experiencing the mind, `,
-    "mn118:26.3": `or collecting the mind, `,
-    "mn118:26.5": `at that time they meditate observing the mind in and of itself—ardently aware and understanding, letting go of craving and aversion towards the world. `,
-    "mn118:26.6": `There is no development of mindfulness of breathing for someone who is unaware and lacks understanding, I say. `,
-    "mn118:26.7": `That’s why at that time a meditator is meditating by observing the mind in and of itself—ardently aware and understanding, letting go of craving and aversion towards the world. `,
-    "mn118:27.1": `Whenever a meditator practices breathing while observing impermanence, `,
-    "mn118:27.2": `or observing disinvolvement, `,
-    "mn118:27.5": `at that time they meditate observing principles in and of themselves—ardently aware and understanding, letting go of craving and aversion towards the world. `,
-    "mn118:27.6": `Having seen with wisdom the giving up of craving and aversion, they watch over closely with equanimity. `,
-    "mn118:27.7": `That’s why at that time a meditator is meditating by observing principles in and of themselves—ardently aware and understanding, letting go of craving and aversion towards the world. `,
-    "mn118:30.1": `Whenever a meditator meditates by observing the body in and of itself, at that time their awareness is established and lucid. `,
-    "mn118:30.2": `At such a time, a meditator cultivates the awakening factor of mindfulness; they develop it and perfect it. `,
-    "mn118:31.2": `At such a time, a meditator cultivates the awakening factor of investigation of principles; they develop it and perfect it. `,
-    "mn118:32.2": `At such a time, a meditator cultivates the awakening factor of energy; they develop it and perfect it. `,
-    "mn118:33.1": `When they’re energetic, delight not of the flesh arises. `,
-    "mn118:33.2": `At such a time, a meditator cultivates the awakening factor of joy; they develop it and perfect it. `,
-    "mn118:34.1": `When they're delighted, the body and mind become tranquil. `,
-    "mn118:34.2": `At such a time, a meditator cultivates the awakening factor of tranquility; they develop it and perfect it. `,
-    "mn118:35.1": `When the body is calm and they feel contented, the mind becomes collected. `,
-    "mn118:35.2": `At such a time, a meditator cultivates the awakening factor of immersion; they develop it and perfect it. `,
-    "mn118:36.1": `They closely watch over that collected mind. `,
-    "mn118:36.2": `At such a time, a meditator cultivates the awakening factor of equanimity; they develop it and perfect it. `,
-    "mn118:37.1": `Whenever a meditator meditates by observing feelings … `,
-    "mn118:38.2": `principles, at that time their awareness is established and lucid. `,
-    "mn118:38.3": `At such a time, a meditator has initiated the awakening factor of mindfulness … `,
-    "mn118:42.1": `It’s when a meditator develops the awakening factors of mindfulness, `,
-    "mn118:42.4": `joy, `,
-    "mn118:42.7": `and equanimity, which rely on seclusion, disinvolvment, and cessation, and ripen as letting go. `,
-    "mn118:43.3": `Satisfied, the meditators approved what the Buddha said. `,
-
-    // Kummopamasutta
-    "sn35.240:2.7": `If the faculty of sight were left unrestrained, bad unskillful qualities of craving and aversion would become overwhelming. For this reason, practice restraint, protecting the faculty of sight, and achieving its restraint. `,
-    "sn35.240:2.13": `If the faculty of mind were left unrestrained, bad unskillful qualities of craving and aversion would become overwhelming. For this reason, practice restraint, protecting the faculty of mind, and achieving its restraint. `,
-
-    // Sabbasutta
-    "sn35.23:1.11": `Because it's out of one's range.” `,
-
-    // Anudhammasutta
-    "sn22.39:1.3": `They should live full of disenchantment towards form, feeling, perception, choices, and consciousness. `,
-
-    // Satisutta
-    "sn47.35:0.3": `Aware `,
-    "sn47.35:1.2": `“Meditators, a meditator should live with awareness and understanding. `,
-    "sn47.35:2.1": `And how is a meditator aware? `,
-    "sn47.35:2.2": `It’s when a meditator lives observing the body in and of itself — ardently aware and understanding, without craving and aversion towards the world <span class="add">of mind and matter</span>. `,
-    "sn47.35:2.3": `He lives observing feelings in and of themselves … `,
-    "sn47.35:2.5": `principles — ardently aware and understanding, without craving and aversion towards the world <span class="add">of mind and matter</span>. `,
-    "sn47.35:2.6": `That’s how a meditator is aware. `,
-    "sn47.35:3.1": `And how is a meditator understanding? `,
-    "sn47.35:3.2": `Feelings are known to the meditator as they arise, as they persist, and as they disappear. `,
-    "sn47.35:3.3": `Thoughts are known as they arise, as they persist, and as they disappear. `,
-    "sn47.35:3.4": `Perceptions are known as they arise, as they persist, and as they disappear. `,
-    "sn47.35:3.5": `That’s how a meditator is understanding. `,
-    "sn47.35:3.6": `A meditator should live with awareness and understanding. `,
-
-    // Mahārāhulovādasutta
-    "mn62:26.1": "^mn118:18.1",
-    "mn62:26.2": "^mn118:18.2",
-    "mn62:26.3": "^mn118:18.3",
-    "mn62:26.4": "^mn118:18.4",
-    "mn62:27.1": "^mn118:19.1",
-    "mn62:27.2": "^mn118:19.2",
-    "mn62:27.3": "^mn118:19.3",
-    "mn62:27.4": "^mn118:19.4",
-    "mn62:28.1": "^mn118:20.1",
-    "mn62:28.2": "^mn118:20.2",
-    "mn62:28.3": "^mn118:20.3",
-    "mn62:28.4": "^mn118:20.4",
-    "mn62:29.1": "^mn118:21.1",
-    "mn62:29.2": "^mn118:21.2",
-    "mn62:29.3": "^mn118:21.3",
-    "mn62:29.4": "^mn118:21.4",
-
-    // Satipatthana Sutta
-    "mn10:34.2": `It"s when a meditator understands mind with greed as "greedy mind," `,
-    "mn10:34.4": `They understand mind with hate as "hateful mind," `,
-    "mn10:34.6": `They understand mind with delusion as "deluded mind," `,
-    "mn10:34.8": `They know contracted <span class="add">[dull]</span> mind as "contracted mind," `,
-    "mn10:34.9": `and distracted <span class="add">[restless]</span> mind as "distracted mind." `,
-    "mn10:34.10": `They know great mind as "great mind," `,
-    "mn10:34.11": `and not great mind as "not great mind." `,
-    "mn10:34.12": `They know mind that is unsurpassable as "unsurpassable mind," `,
-    "mn10:34.13": `and mind that is surpassable as "surpassable mind." `,
-    "mn10:34.14": `They know collected mind as "mind collected," `,
-    "mn10:34.15": `and not collected mind as "mind not collected." `,
-    "mn10:34.16": `They know a mind that is freed as "freed mind," `,
-    "mn10:34.17": `and a mind that is not freed as "unfreed mind." `,
-
-    "#": ""
-};
-
 (function($) {
     if ('history' in window && 'scrollRestoration' in window) {
       window.history.scrollRestoration = 'auto';
@@ -189,9 +37,23 @@ var mine = {
                 console.error(err);
                 return
             }
+
             Object.entries(en).forEach(([key, value]) => {
-                console.log(key, value);
-                $("span.segment[id='"+key+"'] > .translation > .text").html(value);
+                var el = $("span.segment[id='"+key+"'] > .translation > .text"),
+                    orig = el.html(),
+                    diff = "";
+
+                if (orig != value) {
+                    // the text is changed, so create the diff
+                    const diffHTML = Diff.diffWords(orig, value).map(part => {
+                        const cls = part.added ? 'diff-added' : part.removed ? 'diff-removed' : '';
+                        return `<span class="${cls}">${part.value}</span>`;
+                    }).join('');
+
+                    diff = ' <span class="comment red"><b>Original text</b>: '+ diffHTML +'</span>';
+                }
+
+                el.html(value + diff);
             });
         });
     })
@@ -208,7 +70,7 @@ var mine = {
         $(document).on("dblclick", ".segment", function() {
             const id = $(this).attr("id");
             const text = $(this).find(".translation .text").text();
-            copyTextToClipboard('    "' + id + '": `' + text + '`,\r\n');
+            copyTextToClipboard(id);
         });
 
         // clicking outside the text closes all open root texts
