@@ -109,6 +109,10 @@ function addStyles() {
     });
 
     GM_addStyle(`
+      header h1 {
+        font-variant-caps: normal !important;
+      }
+
       h1 .text, h2 .text, h3 .text {
         color: #777 !important;
       }
