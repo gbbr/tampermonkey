@@ -26,10 +26,16 @@ const SUTTA_BASE = "file:///Users/azzalos/g/tampermonkey/sujato/sutta";
 (function($) {
     addStyles()
 
-    waitForElement("h1.sutta-title").then((el) => {
+    waitForElement("main").then((el) => {
         // Once the page has loaded, load the JSON sutta translation from
         // disk and replace the HTML with it, adding a diff to show the changes.
-        loadSutta($("article[id]").attr("id"), (err, en) => {
+        var rangeid = $("section.range[id]").attr("id"),
+            id = $("article[id]").attr("id");
+
+        if (typeof rangeid != 'undefined') {
+            id = rangeid;
+        }
+        loadSutta(id, (err, en) => {
             if (err != null) {
                 console.error(err);
                 return
