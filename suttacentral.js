@@ -27,7 +27,8 @@ const SUTTA_BASE = "file:///Users/azzalos/g/tampermonkey/sujato/sutta";
     addStyles()
 
     waitForElement("h1.sutta-title").then((el) => {
-        // Replace translation from disk
+        // Once the page has loaded, load the JSON sutta translation from
+        // disk and replace the HTML with it, adding a diff to show the changes.
         loadSutta($("article[id]").attr("id"), (err, en) => {
             if (err != null) {
                 console.error(err);
@@ -54,15 +55,16 @@ const SUTTA_BASE = "file:///Users/azzalos/g/tampermonkey/sujato/sutta";
         });
     })
 
-    // toggle root text on clicking translation
     $(document).ready(function() {
-        // expose Pali root on click
+        // The root pali text ("line-by-line") is hidden, and this code
+        // toggles it when clicking each text segment.
         $(document).on("click", ".segment .translation", function() {
             $(this).parent().find(".root").toggleClass("show");
         });
 
         fixClose($)
 
+        // dblclick a segment to copy its ID to clipboard
         $(document).on("dblclick", ".segment", function() {
             const id = $(this).attr("id");
             const text = $(this).find(".translation .text").text();
@@ -83,8 +85,20 @@ const SUTTA_BASE = "file:///Users/azzalos/g/tampermonkey/sujato/sutta";
     });
 })(window.jQuery.noConflict(true));
 
+// add CSS styles
 function addStyles() {
-    injectFonts();
+    [
+      'https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap',
+      'https://db.onlinewebfonts.com/c/8682a614b45207e84ddd15ef6093cdab?family=Sabon+Next+LT+W04+Regular',
+      'https://db.onlinewebfonts.com/c/663c911905498d27729fe0a7f1ca2cc4?family=Bookerly',
+      'https://fonts.googleapis.com/css2?family=Baskervville:ital,wght@0,400..700;1,400..700&family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet'
+    ].forEach(resourceURL => {
+      const link = document.createElement('link');
+      link.href = resourceURL;
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      document.head.appendChild(link);
+    });
 
     GM_addStyle(`
       h1 .text, h2 .text, h3 .text {
@@ -189,23 +203,8 @@ async function copyTextToClipboard(text) {
   }
 }
 
-function injectFonts() {
-  [
-      'https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap',
-      'https://db.onlinewebfonts.com/c/8682a614b45207e84ddd15ef6093cdab?family=Sabon+Next+LT+W04+Regular',
-      'https://db.onlinewebfonts.com/c/663c911905498d27729fe0a7f1ca2cc4?family=Bookerly',
-      'https://fonts.googleapis.com/css2?family=Baskervville:ital,wght@0,400..700;1,400..700&family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet'
-  ].forEach(resourceURL => {
-      const link = document.createElement('link');
-      link.href = resourceURL;
-      link.rel = 'stylesheet';
-      link.type = 'text/css';
-      document.head.appendChild(link);
-  });
-}
-
 // fixClose fixes an issue when closing the dictionary popup
-// where the highlighted text isn't removed
+// where the highlighted word isn't de-highlighted
 function fixClose($) {
     // This function handles the logic once the shadow root is accessible
     function startShadowObserver(host) {
@@ -314,7 +313,7 @@ function suttaPath(suttaId) {
     );
 }
 
-// loadSutta loads the sutta with the given suttaId and calls the callback.
+// loadSutta loads the sutta with the given suttaId and calls the callback(err, data).
 function loadSutta(suttaId, cb) {
   const promise = new Promise((resolve, reject) => {
     let url;
