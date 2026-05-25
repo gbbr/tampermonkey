@@ -14,11 +14,14 @@
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=suttacentral.net
 // @grant        GM_addStyle
 // @grant        GM_getResourceURL
+// @grant        GM_xmlhttpRequest
 // ==/UserScript==
 
 /* ====== END TAMPERMONKEY SCRIPT ====== */
 
 /* global Diff */
+
+const SUTTA_BASE = "file:///Users/azzalos/g/tampermonkey/sujato/sutta";
 
 var mine = {
     // Anapanasatisutta
@@ -180,36 +183,17 @@ var mine = {
     addStyles()
 
     waitForElement("h1.sutta-title").then((el) => {
-        // Replace translations with custom ones
-        var replaced = 0;
-        Object.keys(mine).forEach(function(id) {
-            var txt = mine[id];
-            if (txt.length > 1 && txt[0] == '^') {
-                // the key value is referencing another ID
-                // to get the text from
-                txt = mine[txt.slice(1)];
-            }
-
-            var el = $('[id="' + id + '"]');
-
-            if (el.length == 0) {
+        // Replace translation from disk
+        loadSutta($("article[id]").attr("id"), (err, en) => {
+            if (err != null) {
+                console.error(err);
                 return
             }
-
-            var t = el.find(".translation > .text"),
-                o = t.html();
-
-            // Map the parts to HTML
-            const html = Diff.diffWords(o, txt).map(part => {
-                const colorClass = part.added ? 'diff-added' : part.removed ? 'diff-removed' : '';
-                return `<span class="${colorClass}">${part.value}</span>`;
-            }).join('');
-
-            t.html(txt + ' <span class="comment red"><b>Original text</b>: '+ html +'</span>');
-            replaced++;
+            Object.entries(en).forEach(([key, value]) => {
+                console.log(key, value);
+                $("span.segment[id='"+key+"'] > .translation > .text").html(value);
+            });
         });
-
-        console.log("Replaced " + replaced + " translations.");
     })
 
     // toggle root text on clicking translation
@@ -416,4 +400,103 @@ function fixClose($) {
         childList: true,
         subtree: true
     });
+}
+
+// suttaPath returns the file path to the JSON containing the translation based
+// on the sutta ID such as mn118 or sn47.35 etc.
+function suttaPath(suttaId) {
+    // DN and MN: files sit directly in their collection folder
+    const FLAT = new Set(["dn", "mn"]);
+     
+    // SN and AN: files are nested in a numeric sub-folder (e.g. sn/sn47/, an/an3/)
+    const NUMERIC_SUB = new Set(["sn", "an"]);
+     
+    // Khuddaka Nikaya collections, nested under kn/<collection>/
+    const KHUDDAKA = new Set([
+      "kp", "dhp", "ud", "iti", "snp",
+      "thag", "thig", "vv", "pv",
+      "ja", "mnd", "cnd", "ps",
+      "bv", "cp", "ap", "ne", "pe", "mil",
+    ]);
+
+    const id = suttaId.trim().toLowerCase();
+    const match = id.match(/^([a-z]+)(.*)$/);
+
+    if (!match) {
+        throw new Error(`Cannot parse sutta ID: "${suttaId}"`);
+    }
+
+    const collection = match[1]; // e.g. "sn", "mn", "dhp"
+    const suffix     = match[2]; // e.g. "47.35", "118", "1.1", ""
+    const filename   = `${id}_translation-en-sujato.json`;
+
+    if (FLAT.has(collection)) {
+        // mn/mn118_translation-en-sujato.json
+        return `${SUTTA_BASE}/${collection}/${filename}`;
+    }
+
+    if (NUMERIC_SUB.has(collection)) {
+        // sn/sn47/sn47.35_translation-en-sujato.json
+        const subNumber = suffix.split(".")[0];
+        if (!subNumber || !/^\d+$/.test(subNumber)) {
+            throw new Error(`Expected a numeric suffix for "${collection}", got "${suffix}"`);
+        }
+        const sub = `${collection}${subNumber}`; // e.g. "sn47"
+        return `${SUTTA_BASE}/${collection}/${sub}/${filename}`;
+    }
+
+    if (KHUDDAKA.has(collection)) {
+        // kn/dhp/dhp1_translation-en-sujato.json
+        return `${SUTTA_BASE}/kn/${collection}/${filename}`;
+    }
+
+    throw new Error(
+        `Unknown collection prefix "${collection}" in ID "${suttaId}". ` +
+        `Known: ${[...FLAT, ...NUMERIC_SUB, ...KHUDDAKA].sort().join(", ")}`
+    );
+}
+
+// loadSutta loads the sutta with the given suttaId and calls the callback.
+function loadSutta(suttaId, cb) {
+  const promise = new Promise((resolve, reject) => {
+    let url;
+    try {
+      url = suttaPath(suttaId);
+    } catch (err) {
+      return reject(err);
+    }
+ 
+    GM_xmlhttpRequest({
+      method: "GET",
+      url,
+      responseType: "arraybuffer",
+      onload(response) {
+        if (response.status !== 200 && response.status !== 0) {
+          // status 0 is normal for file:// in TamperMonkey
+          reject(new Error(`Failed to load "${url}" (status ${response.status})`));
+          return;
+        }
+        try {
+          const text = new TextDecoder("utf-8").decode(response.response);
+          resolve(JSON.parse(text));
+        } catch (e) {
+          reject(new Error(`JSON parse error for "${url}": ${e.message}`));
+        }
+      },
+      onerror(response) {
+        reject(new Error(
+          `Network error loading "${url}". ` +
+          `Check that TamperMonkey has "Allow access to file URLs" enabled ` +
+          `and that REPO_ROOT is set correctly.`
+        ));
+      },
+    });
+  });
+ 
+  // Support optional callback alongside the returned Promise
+  if (typeof cb === "function") {
+    promise.then(data => cb(null, data)).catch(err => cb(err, null));
+  }
+ 
+  return promise;
 }
