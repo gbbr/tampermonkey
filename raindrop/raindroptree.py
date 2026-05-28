@@ -33,6 +33,33 @@ def create_html(collection, main_title):
             if len(parts) >= 2:
                 blurbs[parts[1]] = v.strip()
 
+    # Substrings to strip from folder headings
+    SUBS_TO_REMOVE = [
+        "-ANTARAPEYYALA",
+        "-SATTHUSUTTADI",
+        "-SIKKHASUTTADIPEYYALAEKADASAKA",
+        "The Group of Linked Discourses With ",
+        "The Group of Linked Discourses Beginning With ",
+        "The Linked Discourses on the ",
+        "The Linked Discourses on ",
+        "The Linked Discourses With ",
+        "The Linked Discourses with ",
+        "The Linked Discourses ",
+        "Linked Discourses on the ",
+        "Linked Discourses on ",
+        "Linked Discourses With ",
+        "Linked Discourses with ",
+        "Linked Discourses ",
+        "The Chapter on a ",
+        "The Chapter on the ",
+        "The Chapter on ",
+        "The Chapter of ",
+        "The Chapter with ",
+        "The Chapter with the ",
+        "The Chapter Beginning With ",
+        "The Chapter Beginning with "
+    ]
+
     def sc_url(id_str):
         """SuttaCentral URL for the given ID."""
         return f"https://suttacentral.net/{id_str}/en/sujato?lang=en&layout=linebyline&reference=none&notes=asterisk&highlight=false&script=latin"
@@ -42,17 +69,11 @@ def create_html(collection, main_title):
         Removes a specific string from a text variable and returns the cleaned text.
         It also cleans up any accidental double spaces or trailing spaces left behind.
         """
-        # Ensure we are working with a string
         text_str = str(text_variable)
-        
-        # Remove the target string
         if string_to_remove in text_str:
             cleaned_text = text_str.replace(string_to_remove, "")
-            
-            # Clean up any consecutive spaces created by the removal
             cleaned_text = " ".join(cleaned_text.split())
             return cleaned_text
-            
         return text_str
 
     def get_label(id_str):
@@ -91,6 +112,54 @@ def create_html(collection, main_title):
             next(key_iter)
         return segments[next(key_iter, None)]
 
+    def clean_label(label):
+        """Apply all standard label-cleaning transformations for folder headings."""
+        for term in ["VAGGA", "VAGGA2", "PEYYALA", "ATTHANA", "EKADHAMMA", "SAMYUTTA", "ANNASAKA", "PANNASA", "NIPATA"]:
+            label = re.sub(fr'^.*?{term} ', '', label)
+        for sub in SUBS_TO_REMOVE:
+            label = remove_substring(label, sub)
+        return label
+
+    def needs_index(label):
+        """Return True if label should receive a numeric prefix.
+
+        Labels that already begin with two consecutive ASCII capital letters
+        (e.g. 'AN1', 'SN47', 'MN14') are left alone; prose headings like
+        'With the Elephant' or 'Virtues' get a sequential number.
+        """
+        return not re.match(r'^[A-Z]{2}', html.unescape(label))
+
+    def render_folder(key, children, display_label, indent):
+        """Render a single named group (H3 heading + nested DL block)."""
+        pad = '  ' * indent
+        lines = []
+        desc = blurbs.get(key, '')
+        match display_label:
+            case "DN":
+                display_label = "DN Dīgha Nikāya"
+            case "AN":
+                display_label = "AN Aṅguttara Nikāya"
+            case "MN":
+                display_label = "MN Majjhima Nikāya"
+            case "SN":
+                display_label = "SN Saṁyutta Nikāya"
+            case "SNP":
+                display_label = "Sutta Nipata"
+            case "THAG":
+                display_label = "Theragāthā"
+            case "THIG":
+                display_label = "Therīgāthā"
+            case "UD":
+                display_label = "Udāna"
+
+        lines.append(f'{pad}<DT><H3>{display_label}</H3>')
+        if desc:
+            lines.append(f'{pad}<DD>{html.escape(desc)}')
+        lines.append(f'{pad}<DL><p>')
+        lines.append(render_node(children, indent + 1))
+        lines.append(f'{pad}</DL><p>')
+        return '\n'.join(lines)
+
     def render_node(node, indent=0):
         """Recursively render a node from the tree as HTML."""
         pad = '  ' * indent
@@ -107,51 +176,37 @@ def create_html(collection, main_title):
             lines.append(f'{pad}<DT><A HREF="{url}">{label}</A>')
             if desc:
                 lines.append(f'{pad}<DD>{html.escape(desc)}')
+
         elif isinstance(node, list):
+            # Each dict item in the list is a sibling folder. We iterate
+            # all items together so the index counter is shared across them,
+            # rather than resetting to 1 for every single-key dict.
+            counter = 1
             for item in node:
-                lines.append(render_node(item, indent))
+                if isinstance(item, dict):
+                    for key, children in item.items():
+                        lbl = clean_label(get_label(key)[0])
+                        if needs_index(lbl):
+                            display_label = f'{counter}. {lbl}'
+                            counter += 1
+                        else:
+                            display_label = lbl
+                        lines.append(render_folder(key, children, display_label, indent))
+                else:
+                    lines.append(render_node(item, indent))
+
         elif isinstance(node, dict):
+            # Multi-key dicts (e.g. the tree root {"an": [...]}).
+            # Siblings here also share a counter.
+            counter = 1
             for key, children in node.items():
-                label, _ = get_label(key) # always has title
-
-                # clean labels
-                for term in ["VAGGA", "VAGGA2", "PEYYALA", "ATTHANA", "EKADHAMMA", "SAMYUTTA", "ANNASAKA", "PANNASA", "NIPATA"]:
-                    label = re.sub(fr'^.*?{term} ', '', label)
-
-                for subs in [
-                    "-ANTARAPEYYALA",
-                    "-SATTHUSUTTADI",
-                    "-SIKKHASUTTADIPEYYALAEKADASAKA",
-                    "The Group of Linked Discourses With ",
-                    "The Group of Linked Discourses Beginning With ",
-                    "The Linked Discourses on the ",
-                    "The Linked Discourses on ",
-                    "The Linked Discourses With ",
-                    "The Linked Discourses with ",
-                    "The Linked Discourses ",
-                    "Linked Discourses on the ",
-                    "Linked Discourses on ",
-                    "Linked Discourses With ",
-                    "Linked Discourses with ",
-                    "Linked Discourses ",
-                    "The Chapter on a ",
-                    "The Chapter on the ",
-                    "The Chapter on ",
-                    "The Chapter of ",
-                    "The Chapter with ",
-                    "The Chapter with the ",
-                    "The Chapter Beginning With ",
-                    "The Chapter Beginning with "
-                ]:
-                    label = remove_substring(label, subs)
-
-                desc = blurbs.get(key, '')
-                lines.append(f'{pad}<DT><H3>{label}</H3>')
-                if desc:
-                    lines.append(f'{pad}<DD>{html.escape(desc)}')
-                lines.append(f'{pad}<DL><p>')
-                lines.append(render_node(children, indent + 1))
-                lines.append(f'{pad}</DL><p>')
+                lbl = clean_label(get_label(key)[0])
+                if needs_index(lbl):
+                    display_label = f'{counter}. {lbl}'
+                    counter += 1
+                else:
+                    display_label = lbl
+                lines.append(render_folder(key, children, display_label, indent))
 
         return '\n'.join(lines)
 
