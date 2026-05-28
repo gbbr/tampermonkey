@@ -35,7 +35,7 @@ def create_html(collection, main_title):
 
     def sc_url(id_str):
         """SuttaCentral URL for the given ID."""
-        return f"https://suttacentral.net/{id_str}/en/sujato"
+        return f"https://suttacentral.net/{id_str}/en/sujato?lang=en&layout=linebyline&reference=none&notes=asterisk&highlight=false&script=latin"
 
     def remove_substring(text_variable, string_to_remove):
         """
@@ -180,11 +180,11 @@ def create_html(collection, main_title):
     print(f"Bookmarks: {bookmark_count}")
     print(f"Folders: {folder_count}")
 
-# create_html("dn", "Dīgha Nikāya")
-# create_html("an", "Aṅguttara Nikāya")
-# create_html("mn", "Majjhima Nikāya")
-# create_html("sn", "Saṁyutta Nikāya")
-# create_html("snp", "Sutta Nipata")
+create_html("dn", "Dīgha Nikāya")
+create_html("an", "Aṅguttara Nikāya")
+create_html("mn", "Majjhima Nikāya")
+create_html("sn", "Saṁyutta Nikāya")
+create_html("snp", "Sutta Nipata")
 create_html("thag", "Theragāthā")
 create_html("thig", "Therīgāthā")
-# create_html("ud", "Udāna")
+create_html("ud", "Udāna")
