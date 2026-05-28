@@ -86,7 +86,7 @@ def create_html(collection, main_title):
         key_iter = iter(segments)
         key = next(key_iter)
         match collection:
-            case "sn":
+            case "sn" | "an":
                 next(key_iter)
         return segments[next(key_iter, None)]
 
