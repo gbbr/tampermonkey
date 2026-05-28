@@ -175,13 +175,6 @@ function addStyles() {
 
       p { margin-top: 1em !important; }
 
-      .spanFocused {
-          display: inline-block;
-          padding: 0 3px;
-          line-height: 1.3;
-          background-color: #f9b20f63 !important;
-      }
-
       .segment .root.show {
         display: block;
       }
@@ -322,6 +315,10 @@ function suttaPath(suttaId) {
 
     if (KHUDDAKA.has(collection)) {
         // kn/dhp/dhp1_translation-en-sujato.json
+        if (collection == "ud" || collection == "snp") {
+            v = suffix[0];
+            return `${SUTTA_BASE}/kn/${collection}/vagga${v}/${filename}`;
+        }
         return `${SUTTA_BASE}/kn/${collection}/${filename}`;
     }
 
