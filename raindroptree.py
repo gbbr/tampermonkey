@@ -10,15 +10,11 @@ def create_html(collection, main_title):
     name_file = f'{sc_data_root}/sc_bilara_data/translation/en/sujato/name/sutta/{collection}-name_translation-en-sujato.json'
     blurb_file = f'{sc_data_root}/sc_bilara_data/root/en/blurb/{collection}-blurbs_root-en.json'
 
-    # Load data files
     with open(tree_file) as f:
         tree = json.load(f)
 
     with open(name_file) as f:
         raw_names = json.load(f)
-
-    with open(blurb_file) as f:
-        raw_blurbs = json.load(f)
 
     # Build lookup dicts
     names = {}
@@ -28,10 +24,14 @@ def create_html(collection, main_title):
             names['.'.join(parts[1:])] = v.strip()
 
     blurbs = {}
-    for k, v in raw_blurbs.items():
-        parts = k.split(':')
-        if len(parts) >= 2:
-            blurbs[parts[1]] = v.strip()
+
+    if collection not in ("thag", "thig"):
+        with open(blurb_file) as f:
+            raw_blurbs = json.load(f)
+        for k, v in raw_blurbs.items():
+            parts = k.split(':')
+            if len(parts) >= 2:
+                blurbs[parts[1]] = v.strip()
 
     def sc_url(id_str):
         """SuttaCentral URL for the given ID."""
@@ -69,11 +69,17 @@ def create_html(collection, main_title):
         Get the file path to the english translation for the sutta
         represented by node (e.g. AN1, MN14, SN47.35, etc)
         """
-        extra_path = ""
-        if collection in ("sn", "an"):
-            folder = node.split('.')[0]
-            extra_path = f'{folder}/'
-        path = f'{sc_data_root}/sc_bilara_data/translation/en/sujato/sutta/{collection}/{extra_path}{node}_translation-en-sujato.json'
+        extra_path = f'{collection}'
+        match collection:
+            case "sn" | "an":
+                folder = node.split('.')[0]
+                extra_path = f'{collection}/{folder}'
+            case "thag" | "thig":
+                extra_path = f'kn/{collection}'
+            case "ud":
+                v = node.split('.')[0][2:]
+                extra_path = f'kn/{collection}/vagga{v}'
+        path = f'{sc_data_root}/sc_bilara_data/translation/en/sujato/sutta/{extra_path}/{node}_translation-en-sujato.json'
 
         with open(path) as f:
             segments = json.load(f)
@@ -108,7 +114,7 @@ def create_html(collection, main_title):
                 label, _ = get_label(key) # always has title
 
                 # clean labels
-                for term in ["VAGGA", "VAGGA2", "PEYYALA", "ATTHANA", "EKADHAMMA", "SAMYUTTA", "ANNASAKA", "PANNASA"]:
+                for term in ["VAGGA", "VAGGA2", "PEYYALA", "ATTHANA", "EKADHAMMA", "SAMYUTTA", "ANNASAKA", "PANNASA", "NIPATA"]:
                     label = re.sub(fr'^.*?{term} ', '', label)
 
                 for subs in [
@@ -173,7 +179,11 @@ def create_html(collection, main_title):
     print(f"Bookmarks: {bookmark_count}")
     print(f"Folders: {folder_count}")
 
-# create_html("dn", "Dīgha Nikāya")
-# create_html("an", "Aṅguttara Nikāya")
+create_html("dn", "Dīgha Nikāya")
+create_html("an", "Aṅguttara Nikāya")
 create_html("mn", "Majjhima Nikāya")
 create_html("sn", "Saṁyutta Nikāya")
+create_html("snp", "Sutta Nipata")
+create_html("thag", "Theragāthā")
+create_html("thig", "Therīgāthā")
+create_html("ud", "Udāna")
