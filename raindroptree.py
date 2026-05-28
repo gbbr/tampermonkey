@@ -85,9 +85,10 @@ def create_html(collection, main_title):
             segments = json.load(f)
         key_iter = iter(segments)
         key = next(key_iter)
-        match collection:
-            case "sn" | "an":
-                next(key_iter)
+        if collection in ("sn", "an", "thig", "thag"):
+            next(key_iter)
+        if collection in ("thag"):
+            next(key_iter)
         return segments[next(key_iter, None)]
 
     def render_node(node, indent=0):
@@ -179,11 +180,11 @@ def create_html(collection, main_title):
     print(f"Bookmarks: {bookmark_count}")
     print(f"Folders: {folder_count}")
 
-create_html("dn", "Dīgha Nikāya")
-create_html("an", "Aṅguttara Nikāya")
-create_html("mn", "Majjhima Nikāya")
-create_html("sn", "Saṁyutta Nikāya")
-create_html("snp", "Sutta Nipata")
+# create_html("dn", "Dīgha Nikāya")
+# create_html("an", "Aṅguttara Nikāya")
+# create_html("mn", "Majjhima Nikāya")
+# create_html("sn", "Saṁyutta Nikāya")
+# create_html("snp", "Sutta Nipata")
 create_html("thag", "Theragāthā")
 create_html("thig", "Therīgāthā")
-create_html("ud", "Udāna")
+# create_html("ud", "Udāna")
