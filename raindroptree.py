@@ -173,7 +173,7 @@ def create_html(collection, main_title):
     print(f"Bookmarks: {bookmark_count}")
     print(f"Folders: {folder_count}")
 
-create_html("dn", "Dīgha Nikāya")
+# create_html("dn", "Dīgha Nikāya")
+# create_html("an", "Aṅguttara Nikāya")
 create_html("mn", "Majjhima Nikāya")
 create_html("sn", "Saṁyutta Nikāya")
-create_html("an", "Aṅguttara Nikāya")
