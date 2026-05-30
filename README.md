@@ -7,6 +7,4 @@ find . -type f -name "*.json" -exec sed -i '' 's|keen, aware, and mindful, rid o
 ```
 
 TODO:
-* first/second/third/fourth absorption
-* immerse/immersed/immersion (maybe the last one can stay)
-* others from the jhana book...
+* rapture / delight, bliss / contentment
