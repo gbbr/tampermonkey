@@ -77,25 +77,6 @@ const SUTTA_BASE = "file:///Users/azzalos/g/tampermonkey/sujato/sutta";
         });
 
         fixClose($)
-
-        // dblclick a segment to copy its ID to clipboard
-        $(document).on("dblclick", ".segment", function() {
-            const id = $(this).attr("id");
-            const text = $(this).find(".translation .text").text();
-            copyTextToClipboard(id);
-        });
-
-        // clicking outside the text closes all open root texts
-        $(document).on('dblclick', function(e) {
-            var $target = $('#segmented_text_content');
-            var $target2 = $('sc-bottom-sheet');
-
-            if (!$target.is(e.target) && $target.has(e.target).length === 0) {
-                if (!$target2.is(e.target) && $target2.has(e.target).length === 0) {
-                    $(".root").removeClass("show");
-                }
-            }
-        });
     });
 })(window.jQuery.noConflict(true));
 
@@ -123,11 +104,21 @@ function addStyles() {
       h2 .text,
       h3 .text,
       .text { 
+        font-family: "Georgia", serif !important;
         color: #CCC !important;
+        font-size: 1.4em !important;
+      }
+
+      #bottom_sheet {
+        --sc-font-size-s: 1.2rem !important;
       }
 
       .segment .root .text {
-        color: #998 !important;
+        color: #99A !important;
+      }
+
+      div.floating-tooltip.comment-tooltip {
+          font-size: 1.2em !important;
       }
 
       div.floating-tooltip.comment-tooltip a {
@@ -135,7 +126,6 @@ function addStyles() {
       }
 
       sc-text-page-selector, .root .text {
-        font-family: "Georgia", serif !important;
         font-weight: 400 !important;
       }
 
@@ -159,7 +149,7 @@ function addStyles() {
 
       .segment {
         margin: 0px 40px;
-        grid-template-columns: minmax(200px, 800px) !important;
+        grid-template-columns: minmax(200px, 1000px) !important;
       }
 
       .segment .root {
