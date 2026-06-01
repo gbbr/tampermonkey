@@ -35,10 +35,14 @@ const SUTTA_BASE = "file:///Users/azzalos/g/tampermonkey/sujato/sutta";
         if (typeof rangeid != 'undefined') {
             id = rangeid;
         }
-        loadSutta(id, (err, en) => {
+        loadSutta(id, (err, en, blurb) => {
             if (err != null) {
                 console.error(err);
                 return
+            }
+
+            if (blurb != null) {
+                $("h1.sutta-title").after(`<p class="blurb">${blurb}</p>`);
             }
 
             var nfile = Object.keys(en).length,
@@ -107,6 +111,13 @@ function addStyles() {
         font-family: "Georgia", serif !important;
         color: #CCC !important;
         font-size: 1.4em !important;
+      }
+
+      header p.blurb {
+        font-size: 1.4em;
+        width: 80%;
+        margin: 0 auto;
+        font-style: italic;
       }
 
       #bottom_sheet {
@@ -346,7 +357,10 @@ function loadSutta(suttaId, cb) {
         }
         try {
           const text = new TextDecoder("utf-8").decode(response.response);
-          resolve(JSON.parse(text));
+          loadBlurb(suttaId, (err, b) => {
+            const blurb = err ? null : b;
+            resolve({ sutta: JSON.parse(text), blurb });
+          })
         } catch (e) {
           reject(new Error(`JSON parse error for "${url}": ${e.message}`));
         }
@@ -363,8 +377,91 @@ function loadSutta(suttaId, cb) {
  
   // Support optional callback alongside the returned Promise
   if (typeof cb === "function") {
-    promise.then(data => cb(null, data)).catch(err => cb(err, null));
+      promise.then(({ sutta, blurb }) => cb(null, sutta, blurb)).catch(err => cb(err, null, null));
   }
  
   return promise;
+}
+
+// Add this constant near SUTTA_BASE at the top of the file:
+const BLURB_BASE = "file:///Users/azzalos/g/tampermonkey/blurbs";
+
+// blurbPath returns { url, key } for the given sutta ID.
+function blurbPath(suttaId) {
+    // 'snp' must be tested before 'sn' to avoid a false match
+    const prefixes = ["snp", "dn", "mn", "an", "sn", "ud"];
+
+    const id = suttaId.trim().toLowerCase();
+    let prefix = null, numberPart = null;
+
+    for (const p of prefixes) {
+        if (id.startsWith(p)) {
+            prefix     = p;
+            numberPart = id.slice(p.length);
+            break;
+        }
+    }
+
+    if (!prefix || !numberPart) {
+        throw new Error(`Cannot parse sutta ID for blurb: "${suttaId}"`);
+    }
+
+    return {
+        url: `${BLURB_BASE}/${prefix}-blurbs_root-en.json`,
+        key: `${prefix}-blurbs:${prefix}${numberPart}`,
+    };
+}
+
+// loadBlurb loads the short blurb string for the given sutta ID and calls
+// callback(err, blurb). Also returns a Promise for async/await usage.
+function loadBlurb(suttaId, cb) {
+    const promise = new Promise((resolve, reject) => {
+        let url, key;
+        try {
+            ({ url, key } = blurbPath(suttaId));
+        } catch (err) {
+            return reject(err);
+        }
+
+        console.log(`Loading blurb for ${suttaId} from ${url}...`);
+
+        GM_xmlhttpRequest({
+            method: "GET",
+            url,
+            responseType: "arraybuffer",
+            onload(response) {
+                if (response.status !== 200 && response.status !== 0) {
+                    // status 0 is normal for file:// in TamperMonkey
+                    reject(new Error(`Failed to load "${url}" (status ${response.status})`));
+                    return;
+                }
+                try {
+                    const text = new TextDecoder("utf-8").decode(response.response);
+                    const data = JSON.parse(text);
+                    const blurb = data[key] ?? null;
+                    if (blurb === null) {
+                        reject(new Error(`No blurb found for key "${key}" in "${url}"`));
+                    } else {
+                        resolve(blurb);
+                    }
+                } catch (e) {
+                    reject(new Error(`JSON parse error for "${url}": ${e.message}`));
+                }
+            },
+            onerror(response) {
+                reject(new Error(
+                    `Network error loading "${url}". ` +
+                    `Check that TamperMonkey has "Allow access to file URLs" enabled ` +
+                    `and that BLURB_BASE is set correctly.`
+                ));
+            },
+        });
+    });
+
+    // Support optional callback alongside the returned Promise
+    if (typeof cb === "function") {
+        promise.then(data => cb(null, data)).catch(err => cb(err, null));
+    }
+
+    return promise;
 }
