@@ -109,8 +109,8 @@ function addStyles() {
       h3 .text,
       .text { 
         font-family: "Georgia", serif !important;
-        color: #CCC !important;
-        font-size: 1.4em !important;
+        color: #DDD !important;
+        font-size: 1.3em !important;
       }
 
       header p.blurb {
@@ -122,10 +122,6 @@ function addStyles() {
 
       #bottom_sheet {
         --sc-font-size-s: 1.2rem !important;
-      }
-
-      .segment .root .text {
-        color: #99A !important;
       }
 
       div.floating-tooltip.comment-tooltip {
@@ -158,6 +154,15 @@ function addStyles() {
 
       a.skip-to-content-link { display: none !important; }
 
+      main > article, div > article, .range {
+        margin: 0 5em !important;
+        max-width: 1000px;
+      }
+
+      header .segment {
+        display: inline !important;
+      }
+
       .segment {
         margin: 0px 40px;
         grid-template-columns: minmax(200px, 1000px) !important;
@@ -166,6 +171,15 @@ function addStyles() {
       .segment .root {
         display: none;
       }
+
+      .segment .root .text {
+        color: #AAA !important;
+      }
+
+      .segment .root.show {
+        display: block;
+      }
+
 
       .comment::before {
         color: #1f8da99e !important;
@@ -180,10 +194,6 @@ function addStyles() {
       }
 
       p { margin-top: 1em !important; }
-
-      .segment .root.show {
-        display: block;
-      }
 
       .diff-added { color: #e6ffec; text-decoration: none; }
       .diff-removed { color: #ffebe9; text-decoration: line-through; }
