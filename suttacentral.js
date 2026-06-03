@@ -21,7 +21,10 @@
 
 /* global Diff */
 
-const SUTTA_BASE = "file:///Users/azzalos/g/tampermonkey/sujato/sutta";
+const SUB_FOLDER = "mine"; // "original" (Sujato) or "mine" (my own)
+
+const SUTTA_BASE = `file:///Users/azzalos/g/tampermonkey/${SUB_FOLDER}/sujato/sutta`;
+const BLURB_BASE = `file:///Users/azzalos/g/tampermonkey/${SUB_FOLDER}/blurb`;
 
 (function($) {
     addStyles()
@@ -392,9 +395,6 @@ function loadSutta(suttaId, cb) {
  
   return promise;
 }
-
-// Add this constant near SUTTA_BASE at the top of the file:
-const BLURB_BASE = "file:///Users/azzalos/g/tampermonkey/blurbs";
 
 // blurbPath returns { url, key } for the given sutta ID.
 function blurbPath(suttaId) {
