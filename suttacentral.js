@@ -10,10 +10,10 @@
 // @match        https://suttacentral.net/*
 // @require      https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js
 // @require      https://cdnjs.cloudflare.com/ajax/libs/jsdiff/5.1.0/diff.min.js
+// @require      file:///Users/azzalos/g/tampermonkey/vars.js
 // @require      file:///Users/azzalos/g/tampermonkey/suttacentral.js
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=suttacentral.net
 // @grant        GM_addStyle
-// @grant        GM_getResourceURL
 // @grant        GM_xmlhttpRequest
 // ==/UserScript==
 
@@ -61,17 +61,27 @@ const BLURB_BASE = `file:///Users/azzalos/g/tampermonkey/${SUB_FOLDER}/blurb`;
                     orig = el.html(),
                     diff = "";
 
-                if (orig != value) {
+                const repl = value.replace(/{{(\w+)}}/g, (match, key) => {
+                    var v = variables[key.trim().toLowerCase()];
+                    if (typeof v == undefined || v == null || key.length == 0) {
+                        return match;
+                    }
+                    if (key[0] == key[0].toUpperCase()) {
+                        v = v.charAt(0).toUpperCase() + v.slice(1);
+                    }
+                    return v;
+                });
+                if (orig != repl) {
                     // the text is changed, so create the diff
-                    const diffHTML = Diff.diffWords(orig, value).map(part => {
+                    const diffHTML = Diff.diffWords(orig, repl).map(part => {
                         const cls = part.added ? 'diff-added' : part.removed ? 'diff-removed' : '';
-                        return `<span class="${cls}">${part.value}</span>`;
+                        return `<span class="${cls}">${part.repl}</span>`;
                     }).join('');
 
                     diff = ' <span class="comment red"><b>Original text</b>: '+ diffHTML +'</span>';
                 }
 
-                el.html(value + diff);
+                el.html(repl + diff);
             });
         });
     })
@@ -206,15 +216,6 @@ function waitForElement(selector) {
             subtree: true
         });
     });
-}
-
-async function copyTextToClipboard(text) {
-  try {
-    await navigator.clipboard.writeText(text);
-    console.log('Text copied to clipboard');
-  } catch (err) {
-    console.error('Failed to copy: ', err);
-  }
 }
 
 // fixClose fixes an issue when closing the dictionary popup
