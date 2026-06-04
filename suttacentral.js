@@ -21,8 +21,8 @@
 
 /* global Diff */
 
-const SUTTA_BASE = `file:///Users/azzalos/g/tampermonkey/translations/sujato/sutta`;
-const BLURB_BASE = `file:///Users/azzalos/g/tampermonkey/translations/blurb`;
+const SUTTA_BASE = `file:///Users/azzalos/g/tampermonkey/en/sujato/sutta`;
+const BLURB_BASE = `file:///Users/azzalos/g/tampermonkey/en/blurb`;
 
 (function($) {
     addStyles()

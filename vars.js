@@ -3,5 +3,6 @@
 // capitalise the values.
 const variables = {
     "concentration": "concentration",
+    "concentrated": "concentrated",
     "madam": "lady",
 }
