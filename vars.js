@@ -2,5 +2,6 @@
 // they should be capitalised in the text and the code will automatically
 // capitalise the values.
 const variables = {
+    "concentration": "concentration",
     "madam": "lady",
 }

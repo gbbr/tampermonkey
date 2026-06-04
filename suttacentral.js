@@ -21,10 +21,8 @@
 
 /* global Diff */
 
-const SUB_FOLDER = "mine"; // "original" (Sujato) or "mine" (my own)
-
-const SUTTA_BASE = `file:///Users/azzalos/g/tampermonkey/${SUB_FOLDER}/sujato/sutta`;
-const BLURB_BASE = `file:///Users/azzalos/g/tampermonkey/${SUB_FOLDER}/blurb`;
+const SUTTA_BASE = `file:///Users/azzalos/g/tampermonkey/translations/sujato/sutta`;
+const BLURB_BASE = `file:///Users/azzalos/g/tampermonkey/translations/blurb`;
 
 (function($) {
     addStyles()
@@ -62,6 +60,7 @@ const BLURB_BASE = `file:///Users/azzalos/g/tampermonkey/${SUB_FOLDER}/blurb`;
                     diff = "";
 
                 const repl = value.replace(/{{(\w+)}}/g, (match, key) => {
+                    // replace variables
                     var v = variables[key.trim().toLowerCase()];
                     if (typeof v == undefined || v == null || key.length == 0) {
                         return match;
@@ -71,11 +70,12 @@ const BLURB_BASE = `file:///Users/azzalos/g/tampermonkey/${SUB_FOLDER}/blurb`;
                     }
                     return v;
                 });
+
                 if (orig != repl) {
                     // the text is changed, so create the diff
                     const diffHTML = Diff.diffWords(orig, repl).map(part => {
                         const cls = part.added ? 'diff-added' : part.removed ? 'diff-removed' : '';
-                        return `<span class="${cls}">${part.repl}</span>`;
+                        return `<span class="${cls}">${part.value}</span>`;
                     }).join('');
 
                     diff = ' <span class="comment red"><b>Original text</b>: '+ diffHTML +'</span>';
