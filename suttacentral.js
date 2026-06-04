@@ -107,14 +107,24 @@ function addStyles() {
         font-variant-caps: normal !important;
       }
 
+      body {
+        background-color: #FFF !important;
+      }
+
       h1 .text,
       h2 .text,
       h3 .text,
       .text { 
-        font-family: "Georgia", serif !important;
-        color: #DDD !important;
+        color: #000 !important;
         font-size: 1.3em !important;
       }
+
+      .segment .root .text {
+        color: #777 !important;
+      }
+
+      .comment::before { color: #1f8da99e !important; }
+      .comment.red::before { color: #ffb1828c !important; }
 
       header p.blurb {
         font-size: 1.4em;
@@ -131,16 +141,8 @@ function addStyles() {
           font-size: 1.2em !important;
       }
 
-      div.floating-tooltip.comment-tooltip a {
-        color: #FFF !important;
-      }
-
       sc-text-page-selector, .root .text {
         font-weight: 400 !important;
-      }
-
-      body {
-        background-color: #111 !important;
       }
 
       #btnInfo:after {
@@ -171,35 +173,17 @@ function addStyles() {
         grid-template-columns: minmax(200px, 1000px) !important;
       }
 
-      .segment .root {
-        display: none;
-      }
-
-      .segment .root .text {
-        color: #AAA !important;
-      }
-
-      .segment .root.show {
-        display: block;
-      }
-
-
-      .comment::before {
-        color: #1f8da99e !important;
-      }
+      .segment .root      { display: none;  }
+      .segment .root.show { display: block; }
 
       .comment.red {
         padding-right: 0px !important;
       }
 
-      .comment.red::before {
-        color: #ffb1828c !important;
-      }
-
       p { margin-top: 1em !important; }
 
-      .diff-added { color: #e6ffec; text-decoration: none; }
-      .diff-removed { color: #ffebe9; text-decoration: line-through; }
+      .diff-added { color: green; text-decoration: none; }
+      .diff-removed { color: #C03030; text-decoration: line-through; }
     `);
 }
 
