@@ -59,18 +59,7 @@ const BLURB_BASE = `file:///Users/azzalos/g/tampermonkey/mine/blurb`;
                     orig = el.html(),
                     diff = "";
 
-                const repl = value.replace(/{{(\w+)}}/g, (match, key) => {
-                    // replace variables
-                    var v = variables[key.trim().toLowerCase()];
-                    if (typeof v == undefined || v == null || key.length == 0) {
-                        return match;
-                    }
-                    if (key[0] == key[0].toUpperCase()) {
-                        v = v.charAt(0).toUpperCase() + v.slice(1);
-                    }
-                    return v;
-                });
-
+                const repl = value;
                 if (orig != repl) {
                     // the text is changed, so create the diff
                     const diffHTML = Diff.diffWords(orig, repl).map(part => {
@@ -87,10 +76,20 @@ const BLURB_BASE = `file:///Users/azzalos/g/tampermonkey/mine/blurb`;
     })
 
     $(document).ready(function() {
+        // Hide comments by default on page load.
+        $("body").addClass("hide-comments");
+
         // The root pali text ("line-by-line") is hidden, and this code
         // toggles it when clicking each text segment.
         $(document).on("click", ".segment .translation", function() {
             $(this).parent().find(".root").toggleClass("show");
+        });
+
+        $(document).on("keydown", function(e) {
+            if (e.key === "c" && !$(e.target).is("input, textarea, [contenteditable]")) {
+                const hidden = $("body").toggleClass("hide-comments").hasClass("hide-comments");
+                showToast($, hidden ? "Comments hidden" : "Comments visible");
+            }
         });
 
         fixClose($)
@@ -125,8 +124,21 @@ function addStyles() {
       h2 .text,
       h3 .text,
       .text { 
-        color: #000 !important;
+        color: #1a1a1a !important;
         font-size: 1.3em !important;
+      }
+
+      p .text {
+        line-height: 1.8em !important;
+      }
+
+      h1 .text,
+      h2 .text {
+        color: #333 !important;
+      }
+
+      article p {
+        margin: 2em 0 0 0 !important;
       }
 
       .segment .root .text {
@@ -137,10 +149,11 @@ function addStyles() {
       .comment.red::before { color: #ffb1828c !important; }
 
       header p.blurb {
-        font-size: 1.4em;
-        width: 80%;
-        margin: 0 auto;
+        font-size: 1.3em;
         font-style: italic;
+        line-height: 1.9em;
+        width: 80%;
+        margin: 1em auto 0 auto !important;
       }
 
       #bottom_sheet {
@@ -194,6 +207,24 @@ function addStyles() {
 
       .diff-added { color: green; text-decoration: none; }
       .diff-removed { color: #C03030; text-decoration: line-through; }
+
+      body.hide-comments span.comment { display: none; }
+
+      #tm-toast {
+        position: fixed;
+        bottom: 2em;
+        right: 2em;
+        padding: 0.4em 0.9em;
+        background: rgba(0,0,0,0.65);
+        color: #fff;
+        font-size: 0.85em;
+        border-radius: 4px;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+        z-index: 99999;
+      }
+      #tm-toast.visible { opacity: 1; }
     `);
 }
 
@@ -272,6 +303,18 @@ function fixClose($) {
         childList: true,
         subtree: true
     });
+}
+
+// showToast briefly displays a small message in the bottom-right corner.
+let toastTimer = null;
+function showToast($, msg) {
+    let $t = $("#tm-toast");
+    if (!$t.length) {
+        $t = $('<div id="tm-toast"></div>').appendTo("body");
+    }
+    $t.text(msg).addClass("visible");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => $t.removeClass("visible"), 1500);
 }
 
 // suttaPath returns the file path to the JSON containing the translation based
