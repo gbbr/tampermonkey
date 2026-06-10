@@ -85,7 +85,7 @@ def process_collection(collection, main_title):
             return html.escape(f"{name}"), True
         return html.escape(upper_id), False
 
-    def get_title(node):
+    def get_title_from_file(node):
         extra_path = f'{collection}'
         match collection:
             case "sn" | "an":
@@ -129,7 +129,7 @@ def process_collection(collection, main_title):
         if isinstance(node, str):
             label, hasTitle = get_label(node)
             if not hasTitle:
-                title = get_title(node)
+                title = get_title_from_file(node)
                 if title:
                     label = f'{title}'.rstrip()
 
