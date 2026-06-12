@@ -2,6 +2,8 @@ import json
 import html
 import re
 import argparse
+import os
+import shutil
 
 sc_data_root = "/Users/azzalos/g/suttacentral/sc-data"
 
@@ -91,13 +93,14 @@ def process_collection(collection, main_title):
             case "sn" | "an":
                 folder = node.split('.')[0]
                 extra_path = f'{collection}/{folder}'
-            case "thag" | "thig":
+            case "thag" | "thig" | "snp" | "dhp" | "iti" | "kp" | "cp" | "ja":
                 extra_path = f'kn/{collection}'
             case "ud":
                 v = node.split('.')[0][2:]
                 extra_path = f'kn/{collection}/vagga{v}'
         
-        path = f'{sc_data_root}/sc_bilara_data/translation/en/sujato/sutta/{extra_path}/{node}_translation-en-sujato.json'
+        path = f'/Users/azzalos/g/tampermonkey/mine/sujato/sutta/{extra_path}/{node}_translation-en-sujato.json'
+        # path = f'{sc_data_root}/sc_bilara_data/translation/en/sujato/sutta/{extra_path}/{node}_translation-en-sujato.json'
 
         try:
             with open(path) as f:
@@ -135,7 +138,8 @@ def process_collection(collection, main_title):
 
             item = {
                 "id": node,
-                "title": label
+                "title": label,
+                "collection": collection
             }
             desc = blurbs.get(node, '')
             if desc:
@@ -176,16 +180,16 @@ def process_collection(collection, main_title):
                     display_label = lbl
 
                 match display_label:
-                    case "DN": display_label = "Dīgha Nikāya"
-                    case "AN": display_label = "Aṅguttara Nikāya"
-                    case "MN": display_label = "Majjhima Nikāya"
-                    case "SN": display_label = "Saṁyutta Nikāya"
-                    case "SNP": display_label = "Sutta Nipata"
+                    case "DN": display_label = "DN Dīgha Nikāya"
+                    case "AN": display_label = "AN Aṅguttara Nikāya"
+                    case "MN": display_label = "MN Majjhima Nikāya"
+                    case "SN": display_label = "SN Saṁyutta Nikāya"
+                    case "SNP": display_label = "Sutta Nipāta"
                     case "THAG": display_label = "Theragāthā"
                     case "THIG": display_label = "Therīgāthā"
                     case "UD": display_label = "Udāna"
                     case "DHP": display_label = "Dhammapada"
-                    case "ITI": display_label = "Itivutaka"
+                    case "ITI": display_label = "Itivuttaka"
                     case "KP": display_label = "Khuddakapāṭha"
                     case "CP": display_label = "Cariyāpiṭaka"
                     case "JA": display_label = "Jātaka"
@@ -245,9 +249,128 @@ def generate_html(unified_tree, output_file):
     print(f"Folders: {folder_count}")
 
 
+def generate_md(unified_tree, output_dir):
+    """Generates a folder structure with Markdown files for each sutta."""
+    if os.path.exists(output_dir):
+        shutil.rmtree(output_dir)
+    os.makedirs(output_dir)
+
+    def sanitize(name):
+        return re.sub(r'[\\/*?:"<>|]', "", html.unescape(name)).strip()
+
+    def get_sutta_body(node_id, collection):
+        extra_path = f'{collection}'
+        match collection:
+            case "sn" | "an":
+                folder = node_id.split('.')[0]
+                extra_path = f'{collection}/{folder}'
+            case "thag" | "thig" | "snp" | "dhp" | "iti" | "kp" | "cp" | "ja":
+                extra_path = f'kn/{collection}'
+            case "ud":
+                v = node_id.split('.')[0][2:]
+                extra_path = f'kn/{collection}/vagga{v}'
+
+        # path = f'{sc_data_root}/sc_bilara_data/translation/en/sujato/sutta/{extra_path}/{node_id}_translation-en-sujato.json'
+        path = f'/Users/azzalos/g/tampermonkey/mine/sujato/sutta/{extra_path}/{node_id}_translation-en-sujato.json'
+
+        try:
+            with open(path) as f:
+                segments = json.load(f)
+        except FileNotFoundError:
+            return []
+
+        key_iter = iter(segments)
+        try:
+            next(key_iter)
+            if collection in ("sn", "an", "thig", "thag"):
+                next(key_iter)
+            if collection in ("thag"):
+                next(key_iter)
+            next(key_iter) # Title entry
+        except StopIteration:
+            pass
+
+        paragraphs = []
+        current_block = None
+        current_paragraph = []
+
+        for k in key_iter:
+            parts = k.split(':')
+            if len(parts) == 2:
+                block = parts[1].split('.')[0]
+            else:
+                block = k
+            
+            text = str(segments[k])
+            is_header = bool(re.match(r'^((?:\d+\.\s*)+)', text))
+            
+            if is_header:
+                if current_paragraph:
+                    paragraphs.append(" ".join(current_paragraph))
+                    current_paragraph = []
+                paragraphs.append(text)
+                current_block = block
+            elif current_block is None:
+                current_block = block
+                current_paragraph.append(text)
+            elif current_block == block:
+                current_paragraph.append(text)
+            else:
+                if current_paragraph:
+                    paragraphs.append(" ".join(current_paragraph))
+                current_block = block
+                current_paragraph = [text]
+                
+        if current_paragraph:
+            paragraphs.append(" ".join(current_paragraph))
+
+        return paragraphs
+
+    def format_line(line):
+        line = str(line)
+        match = re.match(r'^((?:\d+\.\s*)+)', line)
+        if match:
+            level = len(re.findall(r'\d+', match.group(1)))
+            if level == 1:
+                return f"## {line}"
+            elif level == 2:
+                return f"### {line}"
+            elif level >= 3:
+                return f"#### {line}"
+        return line
+
+    def traverse(nodes, current_path):
+        for node in nodes:
+            if "children" in node:
+                title = sanitize(node["title"])
+                new_path = os.path.join(current_path, title)
+                os.makedirs(new_path, exist_ok=True)
+                traverse(node["children"], new_path)
+            else:
+                node_id = node["id"].upper()
+                raw_title = node["title"]
+                title = sanitize(f"{node_id} {raw_title}")
+                file_path = os.path.join(current_path, f"{title}.md")
+                
+                blurb = node.get("description", "")
+                body = get_sutta_body(node["id"], node.get("collection", ""))
+                
+                with open(file_path, 'w', encoding='utf-8') as f:
+                    if blurb:
+                        f.write(f"> [!summary] Summary\n{blurb}\n\n")
+                    for para in body:
+                        para = para.strip()
+                        if para:
+                            f.write(f"{format_line(para)}\n\n")
+
+    traverse(unified_tree, output_dir)
+    print(f"Done! Markdown tree generated in '{output_dir}'.")
+
+
 def main():
     parser = argparse.ArgumentParser(description="Generate SuttaCentral bookmarks from local repository.")
     parser.add_argument('--html', action='store_true', help="Output as an HTML bookmark file instead of JSON.")
+    parser.add_argument('--md', action='store_true', help="Output as a Markdown folder and file structure.")
     args = parser.parse_args()
 
     collections = [
@@ -265,16 +388,30 @@ def main():
         ("cp", "Cariyāpiṭaka"),
         ("ja", "Jātaka")
     ]
+    
+    kn_collection_ids = {"snp", "thag", "thig", "ud", "dhp", "iti", "kp", "cp", "ja"}
 
     print("Building unified tree...")
     unified_tree = []
+    kn_children = []
     
-    # Process all collections into a single structured list
     for coll, title in collections:
-        unified_tree.extend(process_collection(coll, title))
+        processed_nodes = process_collection(coll, title)
+        if coll in kn_collection_ids:
+            kn_children.extend(processed_nodes)
+        else:
+            unified_tree.extend(processed_nodes)
+
+    if kn_children:
+        unified_tree.append({
+            "title": "KN Khuddaka Nikāya",
+            "children": kn_children
+        })
 
     if args.html:
         generate_html(unified_tree, "suttacentral_bookmarks.html")
+    elif args.md:
+        generate_md(unified_tree, "output")
     else:
         output_file = "suttacentral_bookmarks.json"
         with open(output_file, 'w', encoding='utf-8') as f:
