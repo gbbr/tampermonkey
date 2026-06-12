@@ -6,6 +6,7 @@ import os
 import shutil
 
 sc_data_root = "/Users/azzalos/g/suttacentral/sc-data"
+md_output = "/Users/azzalos/Library/Mobile Documents/iCloud~md~obsidian/Documents/Sutta Study/Sutta Pitaka"
 
 SUBS_TO_REMOVE = [
     "-ANTARAPEYYALA",
@@ -411,7 +412,7 @@ def main():
     if args.html:
         generate_html(unified_tree, "suttacentral_bookmarks.html")
     elif args.md:
-        generate_md(unified_tree, "output")
+        generate_md(unified_tree, md_output)
     else:
         output_file = "suttacentral_bookmarks.json"
         with open(output_file, 'w', encoding='utf-8') as f:
