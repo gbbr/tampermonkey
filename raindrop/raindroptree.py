@@ -252,9 +252,7 @@ def generate_html(unified_tree, output_file):
 
 def generate_md(unified_tree, output_dir):
     """Generates a folder structure with Markdown files for each sutta."""
-    if os.path.exists(output_dir):
-        shutil.rmtree(output_dir)
-    os.makedirs(output_dir)
+    os.makedirs(output_dir, exist_ok=True)
 
     def sanitize(name):
         return re.sub(r'[\\/*?:"<>|]', "", html.unescape(name)).strip()
