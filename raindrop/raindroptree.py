@@ -5,7 +5,7 @@ import argparse
 import os
 import shutil
 
-sc_data_root = "/Users/azzalos/g/suttacentral/sc-data"
+sc_data_root = "/Users/azzalos/g/code/suttacentral/sc-data"
 md_output = "/Users/azzalos/Library/Mobile Documents/iCloud~md~obsidian/Documents/Sutta Study/Sutta Pitaka"
 
 SUBS_TO_REMOVE = [
@@ -100,7 +100,7 @@ def process_collection(collection, main_title):
                 v = node.split('.')[0][2:]
                 extra_path = f'kn/{collection}/vagga{v}'
         
-        path = f'/Users/azzalos/g/tampermonkey/mine/sujato/sutta/{extra_path}/{node}_translation-en-sujato.json'
+        path = f'/Users/azzalos/g/code/gbbr/tampermonkey/mine/sujato/sutta/{extra_path}/{node}_translation-en-sujato.json'
         # path = f'{sc_data_root}/sc_bilara_data/translation/en/sujato/sutta/{extra_path}/{node}_translation-en-sujato.json'
 
         try:
@@ -270,7 +270,7 @@ def generate_md(unified_tree, output_dir):
                 extra_path = f'kn/{collection}/vagga{v}'
 
         # path = f'{sc_data_root}/sc_bilara_data/translation/en/sujato/sutta/{extra_path}/{node_id}_translation-en-sujato.json'
-        path = f'/Users/azzalos/g/tampermonkey/mine/sujato/sutta/{extra_path}/{node_id}_translation-en-sujato.json'
+        path = f'/Users/azzalos/g/code/gbbr/tampermonkey/mine/sujato/sutta/{extra_path}/{node_id}_translation-en-sujato.json'
 
         try:
             with open(path) as f:
