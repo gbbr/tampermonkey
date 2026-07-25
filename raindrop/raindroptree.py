@@ -6,7 +6,7 @@ import os
 import shutil
 
 sc_data_root = "/Users/azzalos/g/code/suttacentral/sc-data"
-md_output = "/Users/azzalos/Library/Mobile Documents/iCloud~md~obsidian/Documents/Sutta Study/Sutta Pitaka"
+md_output = "/Users/azzalos/g/obsidian/Sutta Study/Sutta Pitaka"
 
 SUBS_TO_REMOVE = [
     "-ANTARAPEYYALA",
