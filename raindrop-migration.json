@@ -1,0 +1,1803 @@
+[
+  {
+    "uid": "dn11",
+    "title": "DN11 With Kevaddha",
+    "tags": [
+      "nibbana"
+    ],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 184,
+        "s": 2,
+        "e": 37,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "dn14",
+    "title": "DN14 The Great Discourse on Traces Left Behind",
+    "tags": [
+      "impermanence"
+    ],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 540,
+        "s": 0,
+        "e": 77,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "mn10",
+    "title": "MN10 The Discourse on Mindfulness Meditation",
+    "tags": [
+      "satipatthana"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "mn9",
+    "title": "MN9 Right View",
+    "tags": [
+      "right-view",
+      "dependent-origination",
+      "vedana"
+    ],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 120,
+        "s": 0,
+        "e": 109,
+        "color": "#F0E3A8"
+      },
+      {
+        "i": 132,
+        "s": 0,
+        "e": 109,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "mn2",
+    "title": "MN2 All the Defilements",
+    "tags": [],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 44,
+        "s": 1,
+        "e": 238,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "mn20",
+    "title": "MN20 How to Stop Thinking",
+    "tags": [
+      "thinking"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "mn19",
+    "title": "MN19 Two Kinds of Thought",
+    "tags": [
+      "samadhi",
+      "thinking"
+    ],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 47,
+        "s": 0,
+        "e": 64,
+        "color": "#F0E3A8"
+      },
+      {
+        "i": 19,
+        "s": 0,
+        "e": 122,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "mn18",
+    "title": "MN18 The Honey-Cake",
+    "tags": [
+      "vedana",
+      "thinking"
+    ],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 81,
+        "s": 133,
+        "e": 344,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "mn27",
+    "title": "MN27 The Shorter Elephant’s Footprint Simile",
+    "tags": [
+      "gradual-training"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "mn26",
+    "title": "MN26 The Noble Search",
+    "tags": [],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 157,
+        "s": 95,
+        "e": 120,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "mn24",
+    "title": "MN24 Prepared Chariots",
+    "tags": [
+      "purification"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "mn22",
+    "title": "MN22 The Simile of the Snake",
+    "tags": [],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 123,
+        "s": 0,
+        "e": 67,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "mn38",
+    "title": "MN38 The Longer Discourse on the Ending of Craving",
+    "tags": [
+      "gradual-training",
+      "vedana",
+      "senserestraint"
+    ],
+    "favourite": true,
+    "highlights": []
+  },
+  {
+    "uid": "mn31",
+    "title": "MN31 The Shorter Discourse at Gosiṅga",
+    "tags": [],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 33,
+        "s": 1,
+        "e": 83,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "mn49",
+    "title": "MN49 On the Invitation of Divinity",
+    "tags": [
+      "nibbana",
+      "not-self"
+    ],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 109,
+        "s": 0,
+        "e": 35,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "mn44",
+    "title": "MN44 The Shorter Elaboration",
+    "tags": [
+      "vedana"
+    ],
+    "favourite": true,
+    "highlights": [
+      {
+        "i": 85,
+        "s": 1,
+        "e": 37,
+        "color": "#F0E3A8"
+      },
+      {
+        "i": 100,
+        "s": 1,
+        "e": 266,
+        "color": "#F0E3A8"
+      },
+      {
+        "i": 53,
+        "s": 0,
+        "e": 73,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "mn53",
+    "title": "MN53 A Trainee",
+    "tags": [
+      "gradual-training"
+    ],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 44,
+        "s": 0,
+        "e": 185,
+        "color": "#F0E3A8"
+      },
+      {
+        "i": 55,
+        "s": 0,
+        "e": 138,
+        "color": "#F0E3A8"
+      },
+      {
+        "i": 56,
+        "s": 0,
+        "e": 53,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "mn51",
+    "title": "MN51 With Kandaraka",
+    "tags": [
+      "senserestraint",
+      "satipatthana",
+      "gradual-training",
+      "asceticism"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "mn64",
+    "title": "MN64 The Longer Discourse With Māluṅkya",
+    "tags": [
+      "alien",
+      "three-marks"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "mn62",
+    "title": "MN62 The Longer Advice to Rāhula",
+    "tags": [
+      "anapana"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "mn74",
+    "title": "MN74 With Dīghanakha",
+    "tags": [
+      "alien",
+      "vedana",
+      "views",
+      "impermanence"
+    ],
+    "favourite": true,
+    "highlights": [
+      {
+        "i": 95,
+        "s": 1,
+        "e": 54,
+        "color": "#F0E3A8"
+      },
+      {
+        "i": 73,
+        "s": 247,
+        "e": 387,
+        "color": "#F0E3A8"
+      },
+      {
+        "i": 83,
+        "s": 0,
+        "e": 137,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "mn107",
+    "title": "MN107 With Moggallāna the Accountant",
+    "tags": [
+      "gradual-training",
+      "senserestraint",
+      "learning"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "mn106",
+    "title": "MN106 Conducive to the Imperturbable",
+    "tags": [
+      "senserestraint"
+    ],
+    "favourite": true,
+    "highlights": []
+  },
+  {
+    "uid": "mn119",
+    "title": "MN119 Mindfulness of the Body",
+    "tags": [
+      "anapana",
+      "satipatthana",
+      "samadhi"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "mn118",
+    "title": "MN118 Mindfulness of Breathing",
+    "tags": [
+      "anapana",
+      "satipatthana"
+    ],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 59,
+        "s": 129,
+        "e": 151,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "mn117",
+    "title": "MN117 The Great Forty",
+    "tags": [
+      "samadhi"
+    ],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 10,
+        "s": 1,
+        "e": 87,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "mn123",
+    "title": "MN123 Incredible and Amazing",
+    "tags": [
+      "impermanence"
+    ],
+    "favourite": true,
+    "highlights": [
+      {
+        "i": 97,
+        "s": 0,
+        "e": 83,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "mn122",
+    "title": "MN122 The Longer Discourse on Emptiness",
+    "tags": [
+      "impermanence"
+    ],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 102,
+        "s": 0,
+        "e": 99,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "mn138",
+    "title": "MN138 An Analysis of the Statement",
+    "tags": [
+      "senserestraint"
+    ],
+    "favourite": true,
+    "highlights": [
+      {
+        "i": 56,
+        "s": 0,
+        "e": 243,
+        "color": "#F0E3A8"
+      },
+      {
+        "i": 61,
+        "s": 0,
+        "e": 223,
+        "color": "#F0E3A8"
+      },
+      {
+        "i": 73,
+        "s": 0,
+        "e": 215,
+        "color": "#F0E3A8"
+      },
+      {
+        "i": 94,
+        "s": 0,
+        "e": 37,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "mn152",
+    "title": "MN152 The Development of the Faculties",
+    "tags": [
+      "senserestraint",
+      "ugliness"
+    ],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 24,
+        "s": 0,
+        "e": 54,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "mn148",
+    "title": "MN148 Six By Six",
+    "tags": [
+      "vedana"
+    ],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 200,
+        "s": 0,
+        "e": 341,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "sn1.11",
+    "title": "SN1.11 The Garden of Delight",
+    "tags": [
+      "impermanence"
+    ],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 15,
+        "s": 0,
+        "e": 38,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "sn1.21",
+    "title": "SN1.21 A Sword",
+    "tags": [
+      "senserestraint"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "sn6.15",
+    "title": "SN6.15 Full Extinguishment",
+    "tags": [
+      "impermanence"
+    ],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 16,
+        "s": 0,
+        "e": 38,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "sn9.6",
+    "title": "SN9.6 With Anuruddha",
+    "tags": [
+      "impermanence"
+    ],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 19,
+        "s": 0,
+        "e": 38,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "sn12.16",
+    "title": "SN12.16 A Dhamma Speaker",
+    "tags": [
+      "letting-go",
+      "teaching"
+    ],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 5,
+        "s": 0,
+        "e": 176,
+        "color": "#F0E3A8"
+      },
+      {
+        "i": 4,
+        "s": 0,
+        "e": 169,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "sn12.23",
+    "title": "SN12.23 Vital Conditions",
+    "tags": [
+      "impermanence",
+      "samadhi",
+      "dependent-origination",
+      "letting-go"
+    ],
+    "favourite": true,
+    "highlights": []
+  },
+  {
+    "uid": "sn12.37",
+    "title": "SN12.37 Not Yours",
+    "tags": [
+      "not-self",
+      "old-stock",
+      "vedana"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "sn12.67",
+    "title": "SN12.67 Sheaves of Reeds",
+    "tags": [
+      "letting-go"
+    ],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 47,
+        "s": 0,
+        "e": 168,
+        "color": "#F0E3A8"
+      },
+      {
+        "i": 48,
+        "s": 0,
+        "e": 176,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "sn12.64",
+    "title": "SN12.64 If There Is Desire",
+    "tags": [
+      "nibbana"
+    ],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 55,
+        "s": 1,
+        "e": 23,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "sn15.20",
+    "title": "SN15.20 Mount Vepulla",
+    "tags": [
+      "impermanence"
+    ],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 56,
+        "s": 0,
+        "e": 38,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "sn16.3",
+    "title": "SN16.3 Like the Moon",
+    "tags": [
+      "teaching"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "sn22.5",
+    "title": "SN22.5 Development of Immersion",
+    "tags": [
+      "impermanence",
+      "samadhi",
+      "dependent-origination"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "sn22.3",
+    "title": "SN22.3 With Hāliddikāni",
+    "tags": [],
+    "favourite": true,
+    "highlights": []
+  },
+  {
+    "uid": "sn22.2",
+    "title": "SN22.2 At Devadaha",
+    "tags": [],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 68,
+        "s": 1,
+        "e": 195,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "sn22.1",
+    "title": "SN22.1 Nakula’s Father",
+    "tags": [
+      "not-self",
+      "impermanence"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "sn22.15",
+    "title": "SN22.15 That Which is Impermanent",
+    "tags": [
+      "impermanence"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "sn22.12",
+    "title": "SN22.12 Impermanence",
+    "tags": [
+      "impermanence"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "sn22.39",
+    "title": "SN22.39 In Line With the Teaching",
+    "tags": [
+      "letting-go"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "sn22.59",
+    "title": "SN22.59 The Characteristic of Not-Self",
+    "tags": [
+      "not-self"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "sn22.89",
+    "title": "SN22.89 With Khemaka",
+    "tags": [
+      "impermanence"
+    ],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 101,
+        "s": 0,
+        "e": 100,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "sn22.101",
+    "title": "SN22.101 The Adze",
+    "tags": [
+      "simile",
+      "old-stock"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "sn22.122",
+    "title": "SN22.122 An Ethical Mendicant",
+    "tags": [
+      "alien"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "sn25.1",
+    "title": "SN25.1 The Eye",
+    "tags": [
+      "impermanence",
+      "stream-entry"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "sn35.1",
+    "title": "SN35.1 The Interior as Impermanent",
+    "tags": [
+      "impermanence"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "sn35.32",
+    "title": "SN35.32 The Practice Conducive to Uprooting (2nd)",
+    "tags": [
+      "thinking",
+      "impermanence"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "sn35.31",
+    "title": "SN35.31 The Practice Conducive to Uprooting (1st)",
+    "tags": [
+      "thinking"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "sn35.30",
+    "title": "SN35.30 The Practice Fit for Uprooting",
+    "tags": [
+      "thinking"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "sn35.24",
+    "title": "SN35.24 Giving Up",
+    "tags": [
+      "vedana",
+      "senserestraint"
+    ],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 7,
+        "s": 123,
+        "e": 222,
+        "color": "#F0E3A8"
+      },
+      {
+        "i": 3,
+        "s": 125,
+        "e": 228,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "sn35.23",
+    "title": "SN35.23 All",
+    "tags": [
+      "senserestraint"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "sn35.43-51",
+    "title": "SN35.43-51 Nine on Impermanence, Etc.",
+    "tags": [
+      "impermanence"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "sn35.62",
+    "title": "SN35.62 The Depletion of All Fuel for Grasping (2nd)",
+    "tags": [
+      "impermanence"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "sn35.61",
+    "title": "SN35.61 The Depletion of All Fuel for Grasping (1st)",
+    "tags": [
+      "dependent-origination",
+      "vedana"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "sn35.60",
+    "title": "SN35.60 The Complete Understanding of All Grasping",
+    "tags": [
+      "dependent-origination",
+      "vedana"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "sn35.53",
+    "title": "SN35.53 Giving Up Ignorance",
+    "tags": [
+      "impermanence"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "sn35.65",
+    "title": "SN35.65 Samiddhi’s Question About Māra",
+    "tags": [
+      "mara"
+    ],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 5,
+        "s": 1,
+        "e": 143,
+        "color": "#F0E3A8"
+      },
+      {
+        "i": 10,
+        "s": 0,
+        "e": 134,
+        "color": "#F0E3A8"
+      },
+      {
+        "i": 16,
+        "s": 0,
+        "e": 145,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "sn35.64",
+    "title": "SN35.64 With Migajāla (2nd)",
+    "tags": [
+      "senserestraint"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "sn35.63",
+    "title": "SN35.63 With Migajāla (1st)",
+    "tags": [],
+    "favourite": true,
+    "highlights": []
+  },
+  {
+    "uid": "sn35.74",
+    "title": "SN35.74 Sick (1st)",
+    "tags": [
+      "three-marks",
+      "impermanence"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "sn35.93",
+    "title": "SN35.93 A Duality (2nd)",
+    "tags": [
+      "impermanence"
+    ],
+    "favourite": true,
+    "highlights": [
+      {
+        "i": 13,
+        "s": 0,
+        "e": 67,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "sn35.101",
+    "title": "SN35.101 It’s Not Yours (1st)",
+    "tags": [
+      "not-self"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "sn35.99",
+    "title": "SN35.99 Immersion",
+    "tags": [
+      "samadhi",
+      "impermanence",
+      "vedana"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "sn35.95",
+    "title": "SN35.95 Māluṅkyaputta",
+    "tags": [
+      "senserestraint",
+      "vedana"
+    ],
+    "favourite": true,
+    "highlights": []
+  },
+  {
+    "uid": "sn35.94",
+    "title": "SN35.94 Untamed, Unguarded",
+    "tags": [
+      "senserestraint"
+    ],
+    "favourite": true,
+    "highlights": []
+  },
+  {
+    "uid": "sn35.106",
+    "title": "SN35.106 The Origin of Suffering",
+    "tags": [
+      "vedana"
+    ],
+    "favourite": true,
+    "highlights": []
+  },
+  {
+    "uid": "sn35.123",
+    "title": "SN35.123 Things That Fuel Grasping",
+    "tags": [
+      "senserestraint"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "sn35.124",
+    "title": "SN35.124 At Vesālī",
+    "tags": [
+      "senserestraint"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "sn35.154",
+    "title": "SN35.154 Endowed With Faculties",
+    "tags": [],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 3,
+        "s": 0,
+        "e": 135,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "sn35.146",
+    "title": "SN35.146 The Cessation of Deeds",
+    "tags": [
+      "old-stock",
+      "vedana"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "sn35.230",
+    "title": "SN35.230 The Simile of the Angler",
+    "tags": [
+      "simile"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "sn35.247",
+    "title": "SN35.247 The Simile of Six Animals",
+    "tags": [
+      "senserestraint"
+    ],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 49,
+        "s": 1,
+        "e": 64,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "sn35.246",
+    "title": "SN35.246 The Simile of the Harp",
+    "tags": [
+      "senserestraint",
+      "simile",
+      "not-self"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "sn35.245",
+    "title": "SN35.245 The Simile of the Parrot Tree",
+    "tags": [
+      "senserestraint",
+      "impermanence",
+      "simile",
+      "learning"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "sn35.240",
+    "title": "SN35.240 The Simile of the Tortoise",
+    "tags": [
+      "senserestraint",
+      "simile"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "sn35.239",
+    "title": "SN35.239 The Simile of the Chariot",
+    "tags": [
+      "senserestraint",
+      "simile"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "sn36.10",
+    "title": "SN36.10 Rooted in Contact",
+    "tags": [
+      "vedana"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "sn36.7",
+    "title": "SN36.7 The Infirmary (1st)",
+    "tags": [
+      "impermanence",
+      "death",
+      "vedana"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "sn36.5",
+    "title": "SN36.5 Should Be Seen",
+    "tags": [
+      "vedana"
+    ],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 6,
+        "s": 0,
+        "e": 36,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "sn36.3",
+    "title": "SN36.3 Giving Up",
+    "tags": [
+      "vedana"
+    ],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 3,
+        "s": 0,
+        "e": 265,
+        "color": "#F0E3A8"
+      },
+      {
+        "i": 13,
+        "s": 0,
+        "e": 38,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "sn36.2",
+    "title": "SN36.2 Pleasure",
+    "tags": [
+      "vedana"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "sn36.24",
+    "title": "SN36.24 Before",
+    "tags": [
+      "vedana"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "sn45.29",
+    "title": "SN45.29 Feeling",
+    "tags": [
+      "vedana"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "sn46.51",
+    "title": "SN46.51 Nourishing",
+    "tags": [
+      "wise-attention",
+      "enlightenment-factors",
+      "hindrances"
+    ],
+    "favourite": true,
+    "highlights": [
+      {
+        "i": 27,
+        "s": 0,
+        "e": 125,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "sn47.10",
+    "title": "SN47.10 The Nuns’ Quarters",
+    "tags": [
+      "satipatthana"
+    ],
+    "favourite": true,
+    "highlights": []
+  },
+  {
+    "uid": "sn47.2",
+    "title": "SN47.2 Mindful",
+    "tags": [
+      "satipatthana"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "sn47.35",
+    "title": "SN47.35 Mindful",
+    "tags": [
+      "satipatthana",
+      "impermanence"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "an1.1-10",
+    "title": "AN1.1-10 What Occupies the Mind",
+    "tags": [
+      "senserestraint"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "an1.11-20",
+    "title": "AN1.11-20 Giving Up the Hindrances",
+    "tags": [
+      "senserestraint"
+    ],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 22,
+        "s": 0,
+        "e": 138,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "an10.60",
+    "title": "AN10.60 With Girimānanda",
+    "tags": [
+      "impermanence",
+      "letting-go",
+      "anapana",
+      "ugliness"
+    ],
+    "favourite": true,
+    "highlights": []
+  },
+  {
+    "uid": "an10.58",
+    "title": "AN10.58 Rooted",
+    "tags": [
+      "vedana"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "an3.20",
+    "title": "AN3.20 A Shopkeeper (2nd)",
+    "tags": [
+      "learning"
+    ],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 21,
+        "s": 0,
+        "e": 200,
+        "color": "#F0E3A8"
+      },
+      {
+        "i": 24,
+        "s": 0,
+        "e": 218,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "an3.16",
+    "title": "AN3.16 Sure Bet",
+    "tags": [
+      "gradual-training",
+      "senserestraint"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "an3.101",
+    "title": "AN3.101 A Panner",
+    "tags": [
+      "thinking"
+    ],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 13,
+        "s": 0,
+        "e": 203,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "an3.136",
+    "title": "AN3.136 Arising",
+    "tags": [
+      "impermanence",
+      "not-self"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "an4.6",
+    "title": "AN4.6 A Little Learning",
+    "tags": [
+      "learning"
+    ],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 34,
+        "s": 0,
+        "e": 33,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "an4.14",
+    "title": "AN4.14 Restraint",
+    "tags": [
+      "senserestraint",
+      "right-effort",
+      "ugliness"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "an4.12",
+    "title": "AN4.12 Ethics",
+    "tags": [
+      "impermanence"
+    ],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 12,
+        "s": 0,
+        "e": 48,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "an4.37",
+    "title": "AN4.37 Non-decline",
+    "tags": [
+      "gradual-training",
+      "senserestraint"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "an4.41",
+    "title": "AN4.41 Ways of Developing Concentration Further",
+    "tags": [
+      "impermanence",
+      "samadhi"
+    ],
+    "favourite": true,
+    "highlights": [
+      {
+        "i": 14,
+        "s": 0,
+        "e": 98,
+        "color": "#F0E3A8"
+      },
+      {
+        "i": 18,
+        "s": 0,
+        "e": 101,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "an4.90",
+    "title": "AN4.90 Aggregates",
+    "tags": [
+      "impermanence"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "an4.126",
+    "title": "AN4.126 Love (2nd)",
+    "tags": [
+      "alien",
+      "metta"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "an4.124",
+    "title": "AN4.124 Difference (2nd)",
+    "tags": [
+      "alien"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "an4.173",
+    "title": "AN4.173 With Mahākoṭṭhita",
+    "tags": [
+      "nibbana"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "an4.186",
+    "title": "AN4.186 Approach",
+    "tags": [
+      "learning",
+      "teaching"
+    ],
+    "favourite": true,
+    "highlights": [
+      {
+        "i": 19,
+        "s": 0,
+        "e": 198,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "an4.191",
+    "title": "AN4.191 Followed by Ear",
+    "tags": [
+      "learning"
+    ],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 4,
+        "s": 0,
+        "e": 136,
+        "color": "#F0E3A8"
+      },
+      {
+        "i": 5,
+        "s": 0,
+        "e": 66,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "an5.30",
+    "title": "AN5.30 With Nāgita",
+    "tags": [
+      "impermanence"
+    ],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 36,
+        "s": 0,
+        "e": 130,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "an5.56",
+    "title": "AN5.56 Mentor",
+    "tags": [
+      "gradual-training"
+    ],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 5,
+        "s": 0,
+        "e": 491,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "an5.65",
+    "title": "AN5.65 Discussion",
+    "tags": [
+      "teaching"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "an5.73",
+    "title": "AN5.73 One Who Lives by the Teaching (1st)",
+    "tags": [
+      "learning"
+    ],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 15,
+        "s": 0,
+        "e": 79,
+        "color": "#F0E3A8"
+      },
+      {
+        "i": 14,
+        "s": 0,
+        "e": 129,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "an5.96",
+    "title": "AN5.96 Remembering What You’ve Learned",
+    "tags": [
+      "anapana",
+      "learning"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "an5.198",
+    "title": "AN5.198 Well-Spoken Words",
+    "tags": [
+      "right-speech"
+    ],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 2,
+        "s": 0,
+        "e": 65,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "an7.38",
+    "title": "AN7.38 Analytical Understanding (1st)",
+    "tags": [
+      "impermanence",
+      "satipatthana"
+    ],
+    "favourite": true,
+    "highlights": [
+      {
+        "i": 5,
+        "s": 0,
+        "e": 70,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "an8.2",
+    "title": "AN8.2 Wisdom",
+    "tags": [
+      "impermanence"
+    ],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 19,
+        "s": 0,
+        "e": 84,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "an9.36",
+    "title": "AN9.36 Depending on Absorption",
+    "tags": [
+      "samadhi",
+      "alien",
+      "three-marks"
+    ],
+    "favourite": true,
+    "highlights": [
+      {
+        "i": 12,
+        "s": 103,
+        "e": 246,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "snp1.11",
+    "title": "SNP1.11 Victory",
+    "tags": [
+      "ugliness",
+      "senserestraint"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "snp1.8",
+    "title": "SNP1.8 The Discourse on Love",
+    "tags": [
+      "metta"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "snp2.9",
+    "title": "SNP2.9 What Morality?",
+    "tags": [
+      "learning"
+    ],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 20,
+        "s": 0,
+        "e": 50,
+        "color": "#F0E3A8"
+      },
+      {
+        "i": 21,
+        "s": 0,
+        "e": 55,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "snp4.14",
+    "title": "SNP4.14 Speedy",
+    "tags": [
+      "thinking"
+    ],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 4,
+        "s": 0,
+        "e": 49,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "snp4.11",
+    "title": "SNP4.11 Quarrels and Disputes",
+    "tags": [],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 50,
+        "s": 24,
+        "e": 56,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "thag1.23",
+    "title": "THAG1.23 Gosāla",
+    "tags": [
+      "impermanence"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "thag20.1",
+    "title": "THAG20.1 Mahāmoggallāna",
+    "tags": [
+      "impermanence"
+    ],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 77,
+        "s": 0,
+        "e": 38,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "thig5.6",
+    "title": "THIG5.6 Mittākāḷī",
+    "tags": [
+      "impermanence"
+    ],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 17,
+        "s": 0,
+        "e": 50,
+        "color": "#F0E3A8"
+      }
+    ]
+  },
+  {
+    "uid": "thig7.1",
+    "title": "THIG7.1 Uttarā (2nd)",
+    "tags": [
+      "alien"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "ud4.2",
+    "title": "UD4.2 Restless",
+    "tags": [
+      "impermanence"
+    ],
+    "favourite": false,
+    "highlights": []
+  },
+  {
+    "uid": "ud6.2",
+    "title": "UD6.2 Seven Matted-Hair Ascetics",
+    "tags": [],
+    "favourite": false,
+    "highlights": [
+      {
+        "i": 11,
+        "s": 1,
+        "e": 96,
+        "color": "#F0E3A8"
+      }
+    ]
+  }
+]
